@@ -1,8 +1,8 @@
 function ExploreCultureCard() {
   return (
-    <div className="w-[540px] p-3 border rounded-lg">
-      <div>
-        <img src="/images/explore_card.png" alt="explore new cultures" />
+    <div className="w-[540px] p-1 border rounded-xl">
+      <div className="cover">
+        <img src="/images/explore_card.png" className="w-full" alt="explore new cultures" />
       </div>
       <div className="mt-3">
         <p className="text-2xl">

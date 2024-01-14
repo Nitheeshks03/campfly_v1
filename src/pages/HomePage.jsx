@@ -4,6 +4,7 @@ import ExploreCultureCard from "../components/ExploreCultureCard";
 import OurPackagesSection from "../components/OurPackagesSection";
 import BannerCarousel from "../components/BannerCarousel";
 import GetRecommendation from "../components/GetRecommendation";
+import Footer from "../components/Footer";
 
 function HomePage() {
   return (
@@ -22,7 +23,7 @@ function HomePage() {
         <h2 className="text-[40px]">Trending Getaways</h2>
       </div>
       <div className="flex justify-around">
-        <TrendingCard />
+        <TrendingCard/>
         <TrendingCard />
         <TrendingCard />
         <TrendingCard />
@@ -46,6 +47,9 @@ function HomePage() {
       </div>
       <div className="m-20">
         <GetRecommendation/>
+      </div>
+      <div>
+        <Footer/>
       </div>
 
     </div>
