@@ -31,13 +31,14 @@ function HomePage() {
 
       <div className="text-center my-10">
         <h2 className="text-[48px]">Explore New Cultures</h2>
+        <p>Browse destinations for your next holiday plan.</p>
       </div>
-      <div className="flex justify-around">
+      <div className="flex px-20 justify-around">
       <ExploreCultureCard/>
       <ExploreCultureCard/>
       </div>
       <div className="text-center my-5 ">
-        <button className="w-[100px]  p-2 rounded-md bg-[#1ED760]">view more</button>
+        <button className="w-[120px]  p-2 rounded-md bg-[#1ED760]">View More</button>
       </div>
       <div>
         <OurPackagesSection/>
