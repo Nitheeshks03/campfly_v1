@@ -3,6 +3,7 @@ import TrendingCard from "../components/TrendingCard";
 import ExploreCultureCard from "../components/ExploreCultureCard";
 import OurPackagesSection from "../components/OurPackagesSection";
 import BannerCarousel from "../components/BannerCarousel";
+import GetRecommendation from "../components/GetRecommendation";
 
 function HomePage() {
   return (
@@ -43,6 +44,10 @@ function HomePage() {
       <div className="p-20">
       <BannerCarousel />
       </div>
+      <div className="m-20">
+        <GetRecommendation/>
+      </div>
+
     </div>
   );
 }
