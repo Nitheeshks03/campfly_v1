@@ -5,6 +5,8 @@ import OurPackagesSection from "../components/OurPackagesSection";
 import BannerCarousel from "../components/BannerCarousel";
 import GetRecommendation from "../components/GetRecommendation";
 import Footer from "../components/Footer";
+import TrendingCarousel from "../components/TrendingCarousel";
+import ExploreCultureCarousel from "../components/ExploreCultureCarousel";
 
 function HomePage() {
   return (
@@ -22,22 +24,29 @@ function HomePage() {
       <div className="text-center my-10">
         <h2 className="text-[40px]">Trending Getaways</h2>
       </div>
-      <div className="flex justify-around">
+      <div className=" lg:flex  justify-around hidden">
         <TrendingCard/>
         <TrendingCard />
         <TrendingCard />
         <TrendingCard />
       </div>
 
+      <div className="lg:hidden  xs:block">
+        <TrendingCarousel/>
+      </div>
+
       <div className="text-center my-10">
         <h2 className="text-[48px]">Explore New Cultures</h2>
         <p>Browse destinations for your next holiday plan.</p>
       </div>
-      <div className="flex px-20 justify-around">
+      <div className="lg:flex hidden px-20 justify-around">
       <ExploreCultureCard/>
       <ExploreCultureCard/>
       </div>
-      <div className="text-center my-5 ">
+      <div className="lg:hidden block">
+        <ExploreCultureCarousel/>
+      </div>
+      <div className="text-center my-10 ">
         <button className="w-[120px]  p-2 rounded-md bg-[#1ED760]">View More</button>
       </div>
       <div>

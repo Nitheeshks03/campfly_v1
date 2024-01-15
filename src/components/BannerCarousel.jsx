@@ -10,7 +10,7 @@ const BannerCarousel = () => {
     cssEase: "linear",
     className: "center",
     centerMode: true,
-    centerPadding: "120px",
+    centerPadding: "240px",
     slidesToShow: 1,
     speed: 1000,
     dots: false,

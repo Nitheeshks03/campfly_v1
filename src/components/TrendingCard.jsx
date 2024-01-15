@@ -9,7 +9,7 @@ import { BsFillLightningChargeFill } from "react-icons/bs";
 
 function TrendingCard() {
   return (
-    <div className="w-[308px] border rounded-2xl p-2">
+    <div className="lg:w-[308px] w-[350px] mx-auto border rounded-2xl p-2">
       <div className="cover relative">
         <img src="/images/card-1.png" className="w-full" alt="card-1" />
         <div className="bg-[#E8AB0D] absolute bottom-2 right-2 w-[140px] flex justify-center items-center h-[20px] text-[10px] rounded-xl">

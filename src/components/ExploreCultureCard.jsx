@@ -2,7 +2,7 @@ import { MdArrowRightAlt } from "react-icons/md";
 
 function ExploreCultureCard() {
   return (
-    <div className="w-[532px] p-1 border rounded-xl">
+    <div className="w-[532px] mx-auto p-1 border rounded-xl">
       <div className="cover">
         <img
           src="/images/explore_card.png"
