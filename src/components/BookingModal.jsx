@@ -8,23 +8,27 @@ import ContactForm from "./ContactForm.jsx";
 import PreviewBooking from "./PreviewBooking.jsx";
 import BookingSuccess from "./BookingSuccess.jsx";
 import { IoMdClose } from "react-icons/io";
+import { Divider } from '@mantine/core';
 
-function BookingModal({ handleBookingModelClose }) {
+function BookingModal({ handleBookingModalClose }) {
   const [stepper, setStepper] = useState(false);
   const [active, setActive] = useState(1);
   const nextStep = () =>
     setActive((current) => (current < 3 ? current + 1 : current));
   const prevStep = () =>
     setActive((current) => (current > 0 ? current - 1 : current));
-  const handleStepper = () => {
+  const handleStepperOpen = () => {
     setStepper(true);
+  };
+  const handleStepperClose = () => {
+    setStepper(false);
   };
   return (
     <>
       {stepper ? (
         <>
-          <div onClick={handleBookingModelClose}>
-            <IoMdClose className="text-4xl absolute top-0 right-0" />
+          <div onClick={handleBookingModalClose}>
+            <IoMdClose className="text-3xl absolute cursor-pointer top-0 right-0" />
           </div>
           <div className="w-full h-full p-5 border rounded-xl">
             <Stepper active={active} onStepClick={setActive}>
@@ -44,9 +48,15 @@ function BookingModal({ handleBookingModelClose }) {
             </Stepper>
 
             <Group justify="center" mt="xl">
-              <Button variant="default" onClick={prevStep}>
-                Back
-              </Button>
+              {active == 1 ? (
+                <Button variant="default" onClick={handleStepperClose}>
+                  Back
+                </Button>
+              ) : (
+                <Button variant="default" onClick={prevStep}>
+                  Back
+                </Button>
+              )}
               <Button variant="default" onClick={nextStep}>
                 Next step
               </Button>
@@ -56,13 +66,16 @@ function BookingModal({ handleBookingModelClose }) {
       ) : (
         <>
           <div className="w-full h-max p-5 border rounded-xl">
+            <div onClick={handleBookingModalClose}>
+              <IoMdClose className="text-3xl absolute cursor-pointer sm:top-0 sm:right-0 top-3 right-2" />
+            </div>
             <div className="flex justify-between w-full">
               <div className="text-xl font-medium">Package : Munnar</div>
               <div className="w-[160px] flex items-center justify-center px-4 text-[10px] rounded-[10px] bg-[rgba(30,215,96,0.37)]">
                 <p>Member price available</p>
               </div>
             </div>
-            <div className="flex mt-10 w-[60%] justify-between">
+            <div className="sm:flex grid grid-cols-2 sm:flex-row flex-col mt-10 mdl:w-[60%] w-full justify-between">
               <div>
                 <input
                   className="transform scale-150 checked:bg-black"
@@ -97,7 +110,7 @@ function BookingModal({ handleBookingModelClose }) {
                 </label>
               </div>
             </div>
-            <div className="flex w-[70%] mt-4 justify-between">
+            <div className="sm:flex  mdl:w-[70%] w-full mt-4 mdl:justify-between ">
               <div className="bg-[#1ED760] border drop-shadow-lg text-center rounded-xl  py-2 px-4">
                 <p className="font-medium">Premium package</p>
                 <p className="text-xs">₹ 11250 per adult</p>
@@ -116,7 +129,7 @@ function BookingModal({ handleBookingModelClose }) {
             </div>
             <hr />
             <h3 className="font-medium mt-5">What's included</h3>
-            <div className="flex w-[70%] justify-between mt-3 mb-5">
+            <div className="sm:flex mdl:w-[70%] w-full sm:justify-between mt-3 mb-5 grid grid-cols-2">
               <div className="flex items-center">
                 <GiSandsOfTime className="opacity-70 text-[16px]" />
                 <p className="ml-2">5 days / 6 nights</p>
@@ -136,7 +149,7 @@ function BookingModal({ handleBookingModelClose }) {
             </div>
             <hr />
             <div className="flex w-full mt-5">
-              <div className="w-1/2 border-r">
+              <div className="sm:w-1/2 sm:border-r">
                 <p className="text-xl font-medium">
                   Munnar: Honey moon package
                 </p>
@@ -153,7 +166,7 @@ function BookingModal({ handleBookingModelClose }) {
                   Offers applied : 1 offer available
                 </p>
               </div>
-              <div className="w-1/2 pl-10">
+              <div className="w-1/2 sm:block hidden pl-10">
                 <p className="text-xl font-medium">Book with confidence</p>
                 <p className="text-xs">Lowest price guarantee</p>
                 <p className="text-[#787878] text-[10px]">
@@ -169,7 +182,15 @@ function BookingModal({ handleBookingModelClose }) {
                   1234567
                 </p>
               </div>
+
             </div>
+            <Divider my="xs" label="Book with confidence" labelPosition="center" />
+
+            <div className="flex justify-between font-medium text-xs">
+                <div>Lowest price guarantee</div>
+                <div>24/7 global support</div>
+                <div>Call - <span className="text-[#161EDD]">1234567890</span></div>
+              </div>
           </div>
           <div className="text-xs text-center my-5">
             <p>
@@ -179,7 +200,7 @@ function BookingModal({ handleBookingModelClose }) {
           </div>
           <div className="max-w-[520px] h-[63px] mx-auto">
             <button
-              onClick={handleStepper}
+              onClick={handleStepperOpen}
               className="w-full h-full bg-[#1ED760] rounded-[10px] font-medium"
             >
               Book Now
