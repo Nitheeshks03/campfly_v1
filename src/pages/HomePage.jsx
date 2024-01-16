@@ -17,6 +17,10 @@ function HomePage() {
   const handleBookingModalOpen = () => {
     setBookingModal(true);
   };
+  const handleBookingModalClose = () => {
+    setBookingModal(false);
+  };
+  console.log(bookingModal);
   return (
     <div>
       <div className="relative h-screen">
@@ -75,7 +79,7 @@ function HomePage() {
         <>
           <div className="booking-overlay" />
           <div className="booking-modal">
-            <BookingModal />
+            <BookingModal handleBookingModalClose={handleBookingModalClose} />
           </div>
         </>
       )}
