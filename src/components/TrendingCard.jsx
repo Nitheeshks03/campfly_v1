@@ -7,7 +7,7 @@ import { IoMdStar } from "react-icons/io";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { BsFillLightningChargeFill } from "react-icons/bs";
 
-function TrendingCard() {
+function TrendingCard({handleBookingModalOpen}) {
   return (
     <div className="lg:w-[308px] w-[350px] mx-auto border rounded-2xl p-2">
       <div className="cover relative">
@@ -32,7 +32,7 @@ function TrendingCard() {
           </div>
         </div>
       </div>
-      <hr className="my-3"/>
+      <hr className="my-3" />
       <div className="grid grid-cols-2 gap-[10px] pl-5 text-[10px]">
         <div className="flex items-center">
           <GiSandsOfTime className="opacity-70 text-[16px]" />
@@ -51,7 +51,7 @@ function TrendingCard() {
           <p className="ml-2">All tickets</p>
         </div>
       </div>
-      <hr className="mt-3"/>
+      <hr className="mt-3" />
       <div className="flex items-center p-5">
         <div className="flex items-center">
           <p className="opacity-70">From</p>
@@ -63,7 +63,7 @@ function TrendingCard() {
         </div>
       </div>
       <div className="flex justify-center mb-3">
-        <button className="w-[230px] h-[33px] text-xs justify-center flex items-center  p-2 rounded-[10px] bg-[#1ED760]">
+        <button onClick={handleBookingModalOpen} className="w-[230px] h-[33px] text-xs justify-center flex items-center  p-2 rounded-[10px] bg-[#1ED760]">
           Quick Book
           <span>
             <BsFillLightningChargeFill />

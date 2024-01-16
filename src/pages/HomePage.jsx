@@ -7,8 +7,16 @@ import GetRecommendation from "../components/GetRecommendation";
 import Footer from "../components/Footer";
 import TrendingCarousel from "../components/TrendingCarousel";
 import ExploreCultureCarousel from "../components/ExploreCultureCarousel";
+import "../components/BookingModal.css";
+import BookingModal from "../components/BookingModal";
+import { useState } from "react";
 
 function HomePage() {
+  const [bookingModal, setBookingModal] = useState(false);
+
+  const handleBookingModalOpen = () => {
+    setBookingModal(true);
+  };
   return (
     <div>
       <div className="relative h-screen">
@@ -25,14 +33,14 @@ function HomePage() {
         <h2 className="text-[40px]">Trending Getaways</h2>
       </div>
       <div className=" lg:flex  justify-around hidden">
-        <TrendingCard/>
+        <TrendingCard handleBookingModalOpen={handleBookingModalOpen} />
         <TrendingCard />
         <TrendingCard />
         <TrendingCard />
       </div>
 
       <div className="lg:hidden  xs:block">
-        <TrendingCarousel/>
+        <TrendingCarousel />
       </div>
 
       <div className="text-center my-10">
@@ -40,28 +48,37 @@ function HomePage() {
         <p>Browse destinations for your next holiday plan.</p>
       </div>
       <div className="lg:flex hidden px-20 justify-around">
-      <ExploreCultureCard/>
-      <ExploreCultureCard/>
+        <ExploreCultureCard />
+        <ExploreCultureCard />
       </div>
       <div className="lg:hidden block">
-        <ExploreCultureCarousel/>
+        <ExploreCultureCarousel />
       </div>
       <div className="text-center my-10 ">
-        <button className="w-[120px]  p-2 rounded-md bg-[#1ED760]">View More</button>
+        <button className="w-[120px]  p-2 rounded-md bg-[#1ED760]">
+          View More
+        </button>
       </div>
       <div>
-        <OurPackagesSection/>
+        <OurPackagesSection />
       </div>
       <div className="p-20">
-      <BannerCarousel />
+        <BannerCarousel />
       </div>
       <div className="m-20">
-        <GetRecommendation/>
+        <GetRecommendation />
       </div>
       <div>
-        <Footer/>
+        <Footer />
       </div>
-
+      {bookingModal && (
+        <>
+          <div className="booking-overlay" />
+          <div className="booking-modal">
+            <BookingModal />
+          </div>
+        </>
+      )}
     </div>
   );
 }
