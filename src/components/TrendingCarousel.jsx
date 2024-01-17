@@ -3,13 +3,13 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function TrendingCarousel() {
+function TrendingCarousel({ data, handleBookingModalOpen }) {
   var settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 2,
+    slidesToShow: 4,
+    slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 1200,
@@ -22,18 +22,28 @@ function TrendingCarousel() {
   };
   return (
     <Slider {...settings}>
-      <div>
-        <TrendingCard />
-      </div>
-      <div>
-        <TrendingCard />
-      </div>
-      <div>
-        <TrendingCard />
-      </div>
-      <div>
-        <TrendingCard />
-      </div>
+      {data?.TrendingGetawayB?.map((trendingData) => (
+        <div>
+          <TrendingCard
+            key={trendingData.IdForTrendinfGetaway}
+            dayAndNightCount={trendingData.DayAndNightCount}
+            destinationMetaData={trendingData.DestinationMetaData}
+            destinationName={trendingData.DestinationName}
+            discountRate={trendingData.DiscountRate}
+            entryTicket={trendingData.EntryTicket}
+            foodDetail={trendingData.FoodDetail}
+            idForTrendingGetaway={trendingData.IdForTrendinfGetaway}
+            imageUrl={trendingData.ImageUrl}
+            memberPriceAvailable={trendingData.MemberPriceAvailable}
+            noOfRating={trendingData.NoOfRating}
+            offerPrice={trendingData.OfferPrice}
+            originalPrice={trendingData.OriginalPrice}
+            rating={trendingData.Rating}
+            transportDetail={trendingData.TransportDetail}
+            handleBookingModalOpen={handleBookingModalOpen}
+          />
+        </div>
+      ))}
     </Slider>
   );
 }

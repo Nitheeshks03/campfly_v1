@@ -9,10 +9,13 @@ import TrendingCarousel from "../components/TrendingCarousel";
 import ExploreCultureCarousel from "../components/ExploreCultureCarousel";
 import "../components/BookingModal.css";
 import BookingModal from "../components/BookingModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function HomePage() {
   const [bookingModal, setBookingModal] = useState(false);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const handleBookingModalOpen = () => {
     setBookingModal(true);
@@ -20,6 +23,27 @@ function HomePage() {
   const handleBookingModalClose = () => {
     setBookingModal(false);
   };
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://script.google.com/macros/s/AKfycbzxFMhGOKEClESET0TCxOYqQpodkGQPtnyXkwCSd5dVbzAxjf48BfC4VqFPkp6JuXG4/exec?dbTableName=TrendingGetawayB"
+        );
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+  useEffect(() => {
+    fetchData();
+  }, []);
   console.log(bookingModal);
   return (
     <div>
@@ -36,16 +60,11 @@ function HomePage() {
       <div className="text-center my-10">
         <h2 className="text-[40px]">Trending Getaways</h2>
       </div>
-      <div className=" lg:flex  justify-around hidden">
-        <TrendingCard handleBookingModalOpen={handleBookingModalOpen} />
-        <TrendingCard />
-        <TrendingCard />
-        <TrendingCard />
-      </div>
 
-      <div className="lg:hidden  xs:block">
-        <TrendingCarousel />
-      </div>
+      <TrendingCarousel
+        data={data}
+        handleBookingModalOpen={handleBookingModalOpen}
+      />
 
       <div className="text-center my-10">
         <h2 className="text-[48px]">Explore New Cultures</h2>
