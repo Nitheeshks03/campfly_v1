@@ -13,7 +13,8 @@ import { useEffect, useState } from "react";
 
 function HomePage() {
   const [bookingModal, setBookingModal] = useState(false);
-  const [data, setData] = useState(null);
+  const [trendingData, setTrendingData] = useState(null);
+  const [exploreData, setExploreData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -23,25 +24,35 @@ function HomePage() {
   const handleBookingModalClose = () => {
     setBookingModal(false);
   };
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
+        const trendingResponse = await fetch(
           "https://script.google.com/macros/s/AKfycbzxFMhGOKEClESET0TCxOYqQpodkGQPtnyXkwCSd5dVbzAxjf48BfC4VqFPkp6JuXG4/exec?dbTableName=TrendingGetawayB"
         );
+        const exploreResponse = await fetch(
+          "https://script.google.com/macros/s/AKfycbzxFMhGOKEClESET0TCxOYqQpodkGQPtnyXkwCSd5dVbzAxjf48BfC4VqFPkp6JuXG4/exec?dbTableName=ExploreNewCultureB"
+        );
 
-        if (!response.ok) {
+        if (!trendingResponse.ok) {
+          throw new Error("Network response was not ok");
+        }
+        if (!exploreResponse.ok) {
           throw new Error("Network response was not ok");
         }
 
-        const result = await response.json();
-        setData(result);
+        const trendingResult = await trendingResponse.json();
+        const exploreResult = await exploreResponse.json();
+        setTrendingData(trendingResult);
+        setExploreData(exploreResult);
       } catch (error) {
         setError(error);
       } finally {
         setLoading(false);
       }
     };
-  useEffect(() => {
+
     fetchData();
   }, []);
   console.log(bookingModal);
@@ -62,7 +73,7 @@ function HomePage() {
       </div>
 
       <TrendingCarousel
-        data={data}
+        trendingData={trendingData}
         handleBookingModalOpen={handleBookingModalOpen}
       />
 
@@ -70,12 +81,8 @@ function HomePage() {
         <h2 className="text-[48px]">Explore New Cultures</h2>
         <p>Browse destinations for your next holiday plan.</p>
       </div>
-      <div className="lg:flex hidden px-20 justify-around">
-        <ExploreCultureCard />
-        <ExploreCultureCard />
-      </div>
-      <div className="lg:hidden block">
-        <ExploreCultureCarousel />
+      <div>
+        <ExploreCultureCarousel exploreData={exploreData} />
       </div>
       <div className="text-center my-10 ">
         <button className="w-[120px]  p-2 rounded-md bg-[#1ED760]">

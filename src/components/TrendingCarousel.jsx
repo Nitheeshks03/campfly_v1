@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function TrendingCarousel({ data, handleBookingModalOpen }) {
+function TrendingCarousel({ trendingData, handleBookingModalOpen }) {
   var settings = {
     dots: true,
     infinite: true,
@@ -22,7 +22,7 @@ function TrendingCarousel({ data, handleBookingModalOpen }) {
   };
   return (
     <Slider {...settings}>
-      {data?.TrendingGetawayB?.map((trendingData) => (
+      {trendingData?.TrendingGetawayB?.map((trendingData) => (
         <div>
           <TrendingCard
             key={trendingData.IdForTrendinfGetaway}
