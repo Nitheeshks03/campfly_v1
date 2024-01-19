@@ -16,7 +16,7 @@ function Navbar() {
   console.log(isOpen);
   return (
     <>
-      <div className="h-[80px] md:flex hidden justify-between items-center z-50">
+      <div className="h-[80px] mx-5   md:flex hidden justify-between items-center z-50">
         <div className="z-50">
           <img src="/images/campfly_logo.png" alt="campfly" />
         </div>
@@ -27,9 +27,9 @@ function Navbar() {
           <button className="z-50">Sign in</button>
         </div>
       </div>
-      <div className="flex md:hidden justify-between items-center">
-        <div className="z-50">
-          <img src="/images/campfly_logo.png" alt="campfly" />
+      <div className="flex md:hidden mx-5 justify-between items-center">
+        <div className="z-50 sm:w-[205px] w-[160px] sm:h-[45px]">
+          <img src="/images/campfly_logo.png" className="w-full h-full" alt="campfly" />
         </div>
         {isOpen ? (
           <div className="z-50 p-3" onClick={handleIsClose}>
