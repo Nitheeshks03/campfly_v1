@@ -17,9 +17,9 @@ function ExploreCultureCard({
   thingsToDoThreeImageURL,
 }) {
   return (
-    <div className="w-[532px] mx-auto p-1 border rounded-xl">
-      <div className="cover">
-        <img src={mainImageToBeDisplayed} className="w-full" alt={`Explore ${placeName}`} />
+    <div className="sm:w-[532px] w-[350px] mx-auto p-1 border rounded-xl">
+      <div className="cover sm:w-[510px] sm:h-[520px] w-[340px] mx-auto mt-1  ">
+        <img src={mainImageToBeDisplayed} className="w-full h-full rounded-[10px]" alt={`Explore ${placeName}`} />
       </div>
       <div className="p-2">
         <div className="mt-3">
@@ -36,10 +36,10 @@ function ExploreCultureCard({
           <div className="w-[100px] h-[35px] rounded-lg bg-gray-300 flex justify-center items-center  text-gray-600">
             {getThereBestSeason}
           </div>
-          <div className="w-[100px] h-[35px] rounded-lg bg-gray-300 flex justify-center items-center  text-gray-600 ml-3">
+          <div className="w-[100px] h-[35px] truncate rounded-lg bg-gray-300 flex justify-center items-center  text-gray-600 ml-3">
             {getThereNearestAirport}
           </div>
-          <div className="w-[100px] h-[35px] rounded-lg bg-gray-300 flex justify-center items-center  text-gray-600 ml-3">
+          <div className="w-[100px]  h-[35px] truncate rounded-lg bg-gray-300 flex justify-center items-center  text-gray-600 ml-3">
             {getThereNearestMainRailwayStation}
           </div>
         </div>

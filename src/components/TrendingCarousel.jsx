@@ -8,13 +8,27 @@ function TrendingCarousel({ trendingData, handleBookingModalOpen }) {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: trendingData?.TrendingGetawayB.length > 1 ? 4 : 1,
     slidesToScroll: 1,
     responsive: [
+      {
+        breakpoint: 1350,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
       {
         breakpoint: 1200,
         settings: {
           slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 730,
+        settings: {
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
@@ -23,9 +37,8 @@ function TrendingCarousel({ trendingData, handleBookingModalOpen }) {
   return (
     <Slider {...settings}>
       {trendingData?.TrendingGetawayB?.map((trendingData) => (
-        <div>
+        <div key={trendingData.IdForTrendingGetaway}>
           <TrendingCard
-            key={trendingData.IdForTrendinfGetaway}
             dayAndNightCount={trendingData.DayAndNightCount}
             destinationMetaData={trendingData.DestinationMetaData}
             destinationName={trendingData.DestinationName}

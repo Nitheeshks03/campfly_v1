@@ -10,13 +10,21 @@ function ExploreCultureCarousel({ exploreData }) {
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
     <Slider {...settings}>
       {exploreData?.ExploreNewCultureB?.map((item) => (
-        <div>
+        <div className="my-auto" key={item.IdForExplore}>
           <ExploreCultureCard
-            key={item.IdForExplore}
             mainImageToBeDisplayed={item.MainImageToBeDisplayed}
             placeName={item.PlaceName}
             placeNameMetaDescription={item.PlaceNameMetaDescription}

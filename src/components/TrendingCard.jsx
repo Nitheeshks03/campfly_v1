@@ -22,13 +22,14 @@ function TrendingCard({
   originalPrice,
   rating,
   transportDetail,
+  handleBookingModalOpen
 }) {
   return (
-    <div className="w-[308px] border rounded-2xl p-2">
-      <div className="cover relative">
+    <div className="w-[308px] mx-auto border rounded-2xl p-2">
+      <div className="cover w-[290px] h-[210px] relative">
         <img
           src={imageUrl}
-          className="w-full"
+          className="w-full h-full rounded-[10px]"
           alt={`Trending Getaway - ${destinationName}`}
         />
         {memberPriceAvailable === "Yes" && (
@@ -88,7 +89,7 @@ function TrendingCard({
         )}
       </div>
       <div className="flex justify-center mb-3">
-        <button className="w-[230px] h-[33px] text-xs justify-center flex items-center  p-2 rounded-[10px] bg-[#1ED760]">
+        <button onClick={handleBookingModalOpen} className="w-[230px] h-[33px] text-xs justify-center flex items-center  p-2 rounded-[10px] bg-[#1ED760]">
           Quick Book
           <span>
             <BsFillLightningChargeFill />

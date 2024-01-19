@@ -1,6 +1,4 @@
 import Navbar from "../components/Navbar";
-import TrendingCard from "../components/TrendingCard";
-import ExploreCultureCard from "../components/ExploreCultureCard";
 import OurPackagesSection from "../components/OurPackagesSection";
 import BannerCarousel from "../components/BannerCarousel";
 import GetRecommendation from "../components/GetRecommendation";
@@ -10,6 +8,7 @@ import ExploreCultureCarousel from "../components/ExploreCultureCarousel";
 import "../components/BookingModal.css";
 import BookingModal from "../components/BookingModal";
 import { useEffect, useState } from "react";
+import BannerHomeCarousel from "../components/BannerHomeCarousel";
 
 function HomePage() {
   const [bookingModal, setBookingModal] = useState(false);
@@ -55,10 +54,9 @@ function HomePage() {
 
     fetchData();
   }, []);
-  console.log(bookingModal);
   return (
     <div>
-      <div className="relative h-screen">
+      <div className="relative sm:h-screen h-[600px]">
         <Navbar />
         <div className="absolute object-cover h-full w-full top-0 left-0 z-10">
           <img
@@ -71,17 +69,18 @@ function HomePage() {
       <div className="text-center my-10">
         <h2 className="text-[40px]">Trending Getaways</h2>
       </div>
-
-      <TrendingCarousel
-        trendingData={trendingData}
-        handleBookingModalOpen={handleBookingModalOpen}
-      />
+      <div className="px-10">
+        <TrendingCarousel
+          trendingData={trendingData}
+          handleBookingModalOpen={handleBookingModalOpen}
+        />
+      </div>
 
       <div className="text-center my-10">
         <h2 className="text-[48px]">Explore New Cultures</h2>
         <p>Browse destinations for your next holiday plan.</p>
       </div>
-      <div>
+      <div className="my-auto">
         <ExploreCultureCarousel exploreData={exploreData} />
       </div>
       <div className="text-center my-10 ">
@@ -92,10 +91,10 @@ function HomePage() {
       <div>
         <OurPackagesSection />
       </div>
-      <div className="p-20">
-        <BannerCarousel />
+      <div className="my-10">
+        <BannerHomeCarousel />
       </div>
-      <div className="m-20">
+      <div className="sm:m-20 xs:m-5">
         <GetRecommendation />
       </div>
       <div>
