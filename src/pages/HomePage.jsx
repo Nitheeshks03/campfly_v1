@@ -14,11 +14,13 @@ function HomePage() {
   const [bookingModal, setBookingModal] = useState(false);
   const [trendingData, setTrendingData] = useState(null);
   const [exploreData, setExploreData] = useState(null);
+  const [bookingData, setBookingData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const handleBookingModalOpen = () => {
+  const handleBookingModalOpen = (packageData) => {
     setBookingModal(true);
+    setBookingData(packageData);
   };
   const handleBookingModalClose = () => {
     setBookingModal(false);
@@ -67,7 +69,7 @@ function HomePage() {
         </div>
       </div>
       <div className="text-center my-10">
-        <h2 className="text-[40px]">Trending Getaways</h2>
+        <h2 className="sm:text-[40px] text-4xl">Trending Getaways</h2>
       </div>
       <div className="px-10">
         <TrendingCarousel
@@ -77,8 +79,10 @@ function HomePage() {
       </div>
 
       <div className="text-center my-10">
-        <h2 className="text-[48px]">Explore New Cultures</h2>
-        <p>Browse destinations for your next holiday plan.</p>
+        <h2 className="sm:text-[48px] text-4xl">Explore New Cultures</h2>
+        <p className="sm:text-sm text-sm sm:mt-0 mt-3">
+          Browse destinations for your next holiday plan.
+        </p>
       </div>
       <div className="my-auto">
         <ExploreCultureCarousel exploreData={exploreData} />
@@ -104,7 +108,7 @@ function HomePage() {
         <>
           <div className="booking-overlay" />
           <div className="booking-modal">
-            <BookingModal handleBookingModalClose={handleBookingModalClose} />
+            <BookingModal bookingData={bookingData} handleBookingModalClose={handleBookingModalClose} />
           </div>
         </>
       )}

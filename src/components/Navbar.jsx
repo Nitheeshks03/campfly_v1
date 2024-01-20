@@ -1,10 +1,14 @@
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 import { useState } from "react";
+import { useDisclosure } from '@mantine/hooks';
+import { Drawer, Button } from '@mantine/core';
 
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [opened, { open, close }] = useDisclosure(false);
+
 
   const handleIsOpen = () => {
     setIsOpen(true);
@@ -36,11 +40,18 @@ function Navbar() {
             <IoMdClose className="text-4xl" />
           </div>
         ) : (
-          <div className="z-50 p-3" onClick={handleIsOpen}>
+          <div className="z-50 p-3" onClick={open}>
             <RxHamburgerMenu className="text-4xl" />
           </div>
         )}
       </div>
+      <Drawer radius="md" size="md" className="text-2xl leading-10"  opened={opened} onClose={close} >
+        <p>Home</p>
+        <p>Family</p>
+        <p>Friends</p>
+        <p>Solo</p>
+      </Drawer>
+       
     </>
   );
 }

@@ -45,16 +45,16 @@ function ExploreCultureCard({
         </div>
         <div className="font-medium text-[14px] mt-3">Things to do</div>
         <div className="grid grid-cols-4 text-[10px] mt-3">
-          <div>
-            <img src={thingsToDoOneImageURL} alt={`${thingsToDoOneName}`} />
+          <div className='text-center'>
+            <img src={thingsToDoOneImageURL} className='sm:w-[90px] w-[75px] h-[50px] rounded-md mx-auto' alt={`${thingsToDoOneName}`} />
             <p className="truncate mt-2">{thingsToDoOneName}</p>
           </div>
-          <div>
-            <img src={thingsToDoTwoImageURL} alt={`${thingsToDoTwoName}`} />
+          <div className='text-center'>
+            <img src={thingsToDoTwoImageURL} className='sm:w-[90px] w-[75px] h-[50px] rounded-md mx-auto' alt={`${thingsToDoTwoName}`} />
             <p className="truncate mt-2">{thingsToDoTwoName}</p>
           </div>
-          <div>
-            <img src={thingsToDoThreeImageURL} alt={`${thingsToDoThreeName}`} />
+          <div className='text-center'>
+            <img src={thingsToDoThreeImageURL} className='sm:w-[90px] w-[75px] h-[50px] rounded-md mx-auto' alt={`${thingsToDoThreeName}`} />
             <p className="truncate mt-2">{thingsToDoThreeName}</p>
           </div>
           <div>

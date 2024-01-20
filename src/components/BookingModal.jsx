@@ -8,11 +8,13 @@ import ContactForm from "./ContactForm.jsx";
 import PreviewBooking from "./PreviewBooking.jsx";
 import BookingSuccess from "./BookingSuccess.jsx";
 import { IoMdClose } from "react-icons/io";
-import { Divider } from '@mantine/core';
+import { Divider } from "@mantine/core";
 
-function BookingModal({ handleBookingModalClose }) {
+function BookingModal({ handleBookingModalClose, bookingData }) {
   const [stepper, setStepper] = useState(false);
   const [active, setActive] = useState(1);
+  const [selectedPackage, setSelectedPackage] = useState(null);
+
   const nextStep = () =>
     setActive((current) => (current < 3 ? current + 1 : current));
   const prevStep = () =>
@@ -70,10 +72,16 @@ function BookingModal({ handleBookingModalClose }) {
               <IoMdClose className="text-3xl absolute cursor-pointer sm:top-0 sm:right-0 top-3 right-2" />
             </div>
             <div className="flex justify-between w-full">
-              <div className="text-xl font-medium">Package : Munnar</div>
-              <div className="w-[160px] flex items-center justify-center px-4 text-[10px] rounded-[10px] bg-[rgba(30,215,96,0.37)]">
-                <p>Member price available</p>
+              <div >
+                <p className="text-xl font-medium">{bookingData?.destinationName}</p>
+                <p>{bookingData?.destinationMetaData}</p>
+
               </div>
+              {bookingData?.memberPriceAvailable == "Yes" && (
+                <div className="w-[160px] h-[25px] flex items-center justify-center px-4 text-[10px] rounded-[10px] bg-[rgba(30,215,96,0.37)]">
+                  <p>Member price available</p>
+                </div>
+              )}
             </div>
             <div className="sm:flex grid grid-cols-2 sm:flex-row flex-col mt-10 mdl:w-[60%] w-full justify-between">
               <div>
@@ -82,6 +90,7 @@ function BookingModal({ handleBookingModalClose }) {
                   type="radio"
                   id="honeymoon"
                   name="packageType"
+                  onChange={() => setSelectedPackage("honeymoon")}
                 />
                 <label className="ml-2" htmlFor="honeymoon">
                   Honeymoon package
@@ -93,6 +102,7 @@ function BookingModal({ handleBookingModalClose }) {
                   type="radio"
                   id="family"
                   name="packageType"
+                  onChange={() => setSelectedPackage("family/friends")}
                 />
                 <label className="ml-2" htmlFor="family">
                   Family/Friends
@@ -104,8 +114,9 @@ function BookingModal({ handleBookingModalClose }) {
                   type="radio"
                   id="solo"
                   name="packageType"
+                  onChange={() => setSelectedPackage("solo")}
                 />
-                <label className="ml-2" htmlFor="honeymoon">
+                <label className="ml-2" htmlFor="solo">
                   Solo
                 </label>
               </div>
@@ -132,35 +143,39 @@ function BookingModal({ handleBookingModalClose }) {
             <div className="sm:flex mdl:w-[70%] w-full sm:justify-between mt-3 mb-5 grid grid-cols-2">
               <div className="flex items-center">
                 <GiSandsOfTime className="opacity-70 text-[16px]" />
-                <p className="ml-2">5 days / 6 nights</p>
+                <p className="ml-2">{bookingData?.dayAndNightCount}</p>
               </div>
               <div className="flex items-center">
                 <IoFastFoodOutline className="opacity-70 text-[16px]" />
-                <p className="ml-2">Food included</p>
+                <p className="ml-2">{bookingData?.foodDetail}</p>
               </div>
               <div className="flex items-center">
                 <GiSurferVan className="opacity-70 text-[16px]" />
-                <p className="ml-2">Transportation</p>
+                <p className="ml-2">{bookingData?.transportDetail}</p>
               </div>
               <div className="flex items-center">
                 <IoTicketOutline className="opacity-70 text-[16px]" />
-                <p className="ml-2">All tickets</p>
+                <p className="ml-2">{bookingData?.entryTicket}</p>
               </div>
             </div>
             <hr />
             <div className="flex w-full mt-5">
               <div className="sm:w-1/2 sm:border-r">
                 <p className="text-xl font-medium">
-                  Munnar: Honey moon package
+                  {bookingData?.destinationName}: {selectedPackage && `${selectedPackage} package`}
                 </p>
                 <div className="mt-2">
                   <span className="text-[#F00]">-25%</span>
                   <span className="line-through opacity-70 text-xs">
-                    ₹ 15000
+                    {bookingData?.originalPrice}
                   </span>
-                  <span className="">₹ 11250 x 2 Adults</span>
+                  <span className="">
+                    ₹ {bookingData?.offerPrice}x 2 Adults
+                  </span>
                 </div>
-                <p className="text-xl font-medium mt-2">Total - ₹ 22500 </p>
+                <p className="text-xl font-medium mt-2">
+                  Total - {bookingData?.offerPrice * 2}{" "}
+                </p>
                 <p>(No additional taxes or booking fees)</p>
                 <p className="text-xs text-[#1ED760] mt-2">
                   Offers applied : 1 offer available
@@ -182,15 +197,20 @@ function BookingModal({ handleBookingModalClose }) {
                   1234567
                 </p>
               </div>
-
             </div>
-            <Divider my="xs" label="Book with confidence" labelPosition="center" />
+            <Divider
+              my="xs"
+              label="Book with confidence"
+              labelPosition="center"
+            />
 
             <div className="flex justify-between font-medium text-xs">
-                <div>Lowest price guarantee</div>
-                <div>24/7 global support</div>
-                <div>Call - <span className="text-[#161EDD]">1234567890</span></div>
+              <div>Lowest price guarantee</div>
+              <div>24/7 global support</div>
+              <div>
+                Call - <span className="text-[#161EDD]">1234567890</span>
               </div>
+            </div>
           </div>
           <div className="text-xs text-center my-5">
             <p>
