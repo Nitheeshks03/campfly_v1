@@ -57,7 +57,7 @@ function HomePage() {
     fetchData();
   }, []);
   return (
-    <div>
+    <div className="max-w-full overflow-hidden">
       <div className="relative sm:h-screen h-[600px]">
         <Navbar />
         <div className="absolute object-cover h-full w-full top-0 left-0 z-10">
@@ -84,7 +84,7 @@ function HomePage() {
           Browse destinations for your next holiday plan.
         </p>
       </div>
-      <div className="my-auto">
+      <div className="my-auto max-w-full">
         <ExploreCultureCarousel exploreData={exploreData} />
       </div>
       <div className="text-center my-10 ">
