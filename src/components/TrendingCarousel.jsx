@@ -54,6 +54,9 @@ function TrendingCarousel({ trendingData, handleBookingModalOpen }) {
             rating={trendingData.Rating}
             transportDetail={trendingData.TransportDetail}
             handleBookingModalOpen={handleBookingModalOpen}
+            premiumRate={trendingData.PremiumRate}
+            budgetRate={trendingData.BudgetRate}
+            midRangeRate={trendingData.MidRangeRate}
           />
         </div>
       ))}

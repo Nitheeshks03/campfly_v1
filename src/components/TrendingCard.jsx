@@ -22,6 +22,9 @@ function TrendingCard({
   originalPrice,
   rating,
   transportDetail,
+  premiumRate,
+  budgetRate,
+  midRangeRate,
   handleBookingModalOpen
 }) {
   const handleQuickBook = () => {
@@ -40,6 +43,9 @@ function TrendingCard({
       originalPrice,
       rating,
       transportDetail,
+      premiumRate,
+      budgetRate,
+      midRangeRate,
     };
     handleBookingModalOpen(packageData);
   };

@@ -4,46 +4,44 @@ import { GiSurferVan } from "react-icons/gi";
 import { IoTicketOutline } from "react-icons/io5";
 import { GiSandsOfTime } from "react-icons/gi";
 
-function PreviewBooking() {
+function PreviewBooking({customPackage}) {
   return (
     <div>
       <div className="grid grid-cols-2 w-1/2 mt-5">
         <div className="leading-10">
-          <p>Trip ID</p>
           <p>Name</p>
           <p>Email ID</p>
           <p>Phone Number</p>
         </div>
         <div className="leading-10">
-          <p>: CMPF23456</p>
           <p>: Smith John</p>
           <p>: smithjohn@gmail.com</p>
           <p>: 1234567890</p>
         </div>
       </div>
       <div className="flex justify-between mt-10">
-        <div>Destination: Munnar</div>
+        <div>Destination: {customPackage?.destinationName}</div>
         <Divider orientation="vertical" />
-        <div>Package:Honeymoon package</div>
+        <div>Package:{customPackage?.packageType}</div>
         <Divider orientation="vertical" />
 
-        <div>Premium package</div>
+        <div>{customPackage?.packagePriceType}</div>
       </div>
       <div className="flex justify-between mt-10">
-        <div>Start date: 02/03/2024</div>
+        <div>Start date: {customPackage?.startDate}</div>
         <Divider orientation="vertical" />
-        <div>End date: 07/03/2024</div>
+        <div>End date: {customPackage?.endDate}</div>
         <Divider orientation="vertical" />
 
-        <div>Headcount : 2 Adults</div>
+        <div>Headcount : {customPackage?.adultsNum}</div>
       </div>
       <div className="flex mt-10">
         <div className="w-1/2 border-r">
-          <p className="text-xl font-medium">Munnar: Honey moon package</p>
+          <p className="text-xl font-medium">{customPackage?.destinationName}: {customPackage?.packageType}</p>
           <div className="mt-2">
             <span className="text-[#F00]">-25%</span>
             <span className="line-through opacity-70 text-xs">₹ 15000</span>
-            <span className="">₹ 11250 x 2 Adults</span>
+            <span className="">₹ 11250 x {customPackage?.adultsNum} Adults</span>
           </div>
           <p className="text-xl font-medium mt-2">Total - ₹ 22500 </p>
           <p>(No additional taxes or booking fees)</p>

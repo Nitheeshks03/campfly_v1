@@ -3,7 +3,7 @@ import { GiSurferVan } from "react-icons/gi";
 import { IoTicketOutline } from "react-icons/io5";
 import { GiSandsOfTime } from "react-icons/gi";
 import { useState } from "react";
-import { Stepper, Button, Group } from "@mantine/core";
+import { Stepper, Button, Group, Select } from "@mantine/core";
 import ContactForm from "./ContactForm.jsx";
 import PreviewBooking from "./PreviewBooking.jsx";
 import BookingSuccess from "./BookingSuccess.jsx";
@@ -17,6 +17,9 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
   const [active, setActive] = useState(1);
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [adultsNum, setAdultsNum] = useState(1);
+  const [packagePriceType, setPackagePriceType] = useState("");
 
   const nextStep = () =>
     setActive((current) => (current < 3 ? current + 1 : current));
@@ -28,8 +31,18 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
   const handleStepperClose = () => {
     setStepper(false);
   };
-  const handleStartDate = (date) => {
-    setStartDate(date);
+  const handleAdultsNum = (e) => {
+    setAdultsNum(parseInt(e.target.value, 10));
+  };
+
+  const customPackage = {
+    destinationName: bookingData?.destinationName,
+    destinationMetaData: bookingData?.destinationMetaData,
+    selectedPackage,
+    packagePriceType,
+    startDate: startDate ? startDate.toISOString() : null,
+    endDate: endDate ? endDate.toISOString() : null,
+    adultsNum,
   };
   return (
     <>
@@ -48,7 +61,7 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
                 <ContactForm />
               </Stepper.Step>
               <Stepper.Step label="Final step" description="Get full access">
-                <PreviewBooking />
+                <PreviewBooking customPackage={customPackage} />
               </Stepper.Step>
               <Stepper.Completed>
                 <BookingSuccess />
@@ -129,26 +142,56 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
               </div>
             </div>
             <div className="sm:flex  mdl:w-[70%] w-full mt-4 mdl:justify-between ">
-              <div className="bg-[#1ED760] border drop-shadow-lg text-center rounded-xl  py-2 px-4">
+              <div
+                onClick={() => setPackagePriceType("Premium")}
+                className="bg-[#1ED760] border drop-shadow-lg text-center rounded-xl  py-2 px-4"
+              >
                 <p className="font-medium">Premium package</p>
-                <p className="text-xs">₹ 11250 per adult</p>
+                <p className="text-xs">₹ {bookingData?.premiumRate}</p>
               </div>
-              <div className="border drop-shadow-lg text-center rounded-xl  py-2 px-4">
+              <div
+                onClick={() => setPackagePriceType("MidRange")}
+                className="border drop-shadow-lg text-center rounded-xl  py-2 px-4"
+              >
                 <p className="font-medium">Mid range package</p>
-                <p className="text-xs">₹ 11250 per adult</p>
+                <p className="text-xs">₹{bookingData?.midRangeRate} </p>
               </div>
-              <div className="border drop-shadow-lg text-center rounded-xl  py-2 px-4">
+              <div
+                onClick={() => setPackagePriceType("Budget")}
+                className="border drop-shadow-lg text-center rounded-xl  py-2 px-4"
+              >
                 <p className="font-medium">Budget package</p>
-                <p className="text-xs">₹ 11250 per adult</p>
+                <p className="text-xs">₹ {bookingData?.budgetRate}</p>
               </div>
             </div>
-            <div className="flex mt-5">
+            <div className="flex my-5">
               <div>
-                {startDate ? (
-                  <DatePicker selected={startDate} onChange={handleStartDate} />
-                ) : (
-                  <p>Click here to select a date</p>
-                )}
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                  placeholderText="select start date"
+                />
+              </div>
+              <div>
+                <DatePicker
+                  selected={endDate}
+                  onChange={(date) => setEndDate(date)}
+                  placeholderText="select end date"
+                />
+              </div>
+              <div>
+                <select
+                  name="adults"
+                  id="adults"
+                  value={adultsNum}
+                  onChange={handleAdultsNum}
+                >
+                  {[...Array(10)].map((_, index) => (
+                    <option key={index + 1} value={index + 1}>
+                      {index + 1} Adult{index !== 0 && "s"}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
             <hr />
