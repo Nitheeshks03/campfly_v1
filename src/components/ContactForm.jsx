@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 
-function ContactForm() {
+function ContactForm({setContactDetails,nextStep}) {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -27,8 +27,8 @@ function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your form submission logic here
-    console.log("Form submitted:", formData);
+    setContactDetails(formData);
+    nextStep();
   };
 
   return (

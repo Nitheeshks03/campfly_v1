@@ -2,7 +2,8 @@ import { IoFastFoodOutline } from "react-icons/io5";
 import { GiSurferVan } from "react-icons/gi";
 import { IoTicketOutline } from "react-icons/io5";
 import { GiSandsOfTime } from "react-icons/gi";
-import { useState } from "react";
+import { MdOutlineDateRange } from "react-icons/md";
+import { forwardRef, useState } from "react";
 import { Stepper, Button, Group, Select } from "@mantine/core";
 import ContactForm from "./ContactForm.jsx";
 import PreviewBooking from "./PreviewBooking.jsx";
@@ -12,6 +13,32 @@ import { Divider } from "@mantine/core";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+const StartDatePickerInput = forwardRef(({ value, onClick }, ref) => (
+  <div
+    className="border flex items-center w-[130px] h-[30px] rounded-[10px] p-2"
+    onClick={onClick}
+    ref={ref}
+  >
+    <span className="mr-2">
+      <MdOutlineDateRange />
+    </span>
+    {value || "Start date"}
+  </div>
+));
+
+const EndDatePickerInput = forwardRef(({ value, onClick }, ref) => (
+  <div
+    className="border flex items-center rounded-[10px] w-[130px] h-[30px] p-2"
+    onClick={onClick}
+    ref={ref}
+  >
+    <span className="mr-2">
+      <MdOutlineDateRange />
+    </span>
+    {value || "End date"}
+  </div>
+));
+
 function BookingModal({ handleBookingModalClose, bookingData }) {
   const [stepper, setStepper] = useState(false);
   const [active, setActive] = useState(1);
@@ -20,6 +47,7 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
   const [endDate, setEndDate] = useState(null);
   const [adultsNum, setAdultsNum] = useState(1);
   const [packagePriceType, setPackagePriceType] = useState("");
+  const [contactDetails, setContactDetails] = useState(null);
 
   const nextStep = () =>
     setActive((current) => (current < 3 ? current + 1 : current));
@@ -40,10 +68,24 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
     destinationMetaData: bookingData?.destinationMetaData,
     selectedPackage,
     packagePriceType,
-    startDate: startDate ? startDate.toISOString() : null,
-    endDate: endDate ? endDate.toISOString() : null,
+    startDate: startDate ? startDate.toISOString().split("T")[0] : null,
+    endDate: endDate ? endDate.toISOString().split("T")[0] : null,
     adultsNum,
   };
+  const getPackageRate = () => {
+    switch (packagePriceType) {
+      case "Premium":
+        return bookingData?.premiumRate;
+      case "MidRange":
+        return bookingData?.midRangeRate;
+      case "Budget":
+        return bookingData?.budgetRate;
+      default:
+        return bookingData?.offerPrice;
+    }
+  };
+  const total = getPackageRate() * adultsNum;
+
   return (
     <>
       {stepper ? (
@@ -55,13 +97,19 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
             <Stepper active={active} onStepClick={setActive}>
               <Stepper.Step
                 label="First step"
-                description="Create an account"
+                description="Customize package"
               ></Stepper.Step>
-              <Stepper.Step label="Second step" description="Verify email">
-                <ContactForm />
+              <Stepper.Step label="Second step" description="Contact details">
+                <ContactForm
+                  setContactDetails={setContactDetails}
+                  nextStep={nextStep}
+                />
               </Stepper.Step>
-              <Stepper.Step label="Final step" description="Get full access">
-                <PreviewBooking customPackage={customPackage} />
+              <Stepper.Step label="Final step" description="Confirm booking">
+                <PreviewBooking
+                  customPackage={customPackage}
+                  contactDetails={contactDetails}
+                />
               </Stepper.Step>
               <Stepper.Completed>
                 <BookingSuccess />
@@ -78,9 +126,6 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
                   Back
                 </Button>
               )}
-              <Button variant="default" onClick={nextStep}>
-                Next step
-              </Button>
             </Group>
           </div>
         </>
@@ -141,45 +186,52 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
                 </label>
               </div>
             </div>
-            <div className="sm:flex  mdl:w-[70%] w-full mt-4 mdl:justify-between ">
+            <div className="sm:grid sm:grid-cols-3 sm:gap-5  w-full mt-4 justify-between">
               <div
                 onClick={() => setPackagePriceType("Premium")}
-                className="bg-[#1ED760] border drop-shadow-lg text-center rounded-xl  py-2 px-4"
+                className={`${
+                  packagePriceType === "Premium" ? "bg-[#1ED760]" : "bg-white"
+                } cursor-pointer border  drop-shadow-lg text-center rounded-xl py-2 px-4`}
               >
                 <p className="font-medium">Premium package</p>
                 <p className="text-xs">₹ {bookingData?.premiumRate}</p>
               </div>
               <div
                 onClick={() => setPackagePriceType("MidRange")}
-                className="border drop-shadow-lg text-center rounded-xl  py-2 px-4"
+                className={`${
+                  packagePriceType === "MidRange" ? "bg-[#1ED760]" : "bg-white"
+                } cursor-pointer border  drop-shadow-lg text-center rounded-xl py-2 px-4`}
               >
                 <p className="font-medium">Mid range package</p>
                 <p className="text-xs">₹{bookingData?.midRangeRate} </p>
               </div>
               <div
                 onClick={() => setPackagePriceType("Budget")}
-                className="border drop-shadow-lg text-center rounded-xl  py-2 px-4"
+                className={`${
+                  packagePriceType === "Budget" ? "bg-[#1ED760]" : "bg-white"
+                } cursor-pointer border drop-shadow-lg text-center rounded-xl py-2 px-4`}
               >
                 <p className="font-medium">Budget package</p>
                 <p className="text-xs">₹ {bookingData?.budgetRate}</p>
               </div>
             </div>
-            <div className="flex my-5">
+            <div className="flex w-[65%] items-center justify-between my-5">
               <div>
                 <DatePicker
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
-                  placeholderText="select start date"
+                  customInput = {<StartDatePickerInput />}
                 />
               </div>
               <div>
                 <DatePicker
                   selected={endDate}
                   onChange={(date) => setEndDate(date)}
-                  placeholderText="select end date"
+                  customInput={<EndDatePickerInput />}
                 />
               </div>
-              <div>
+
+              <div className="flex border rounded-[10px] w-[130px] h-[30px] px-2 items-center">
                 <select
                   name="adults"
                   id="adults"
@@ -227,12 +279,10 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
                     {bookingData?.originalPrice}
                   </span>
                   <span className="">
-                    ₹ {bookingData?.offerPrice}x 2 Adults
+                    ₹ {getPackageRate()}x {adultsNum} Adults
                   </span>
                 </div>
-                <p className="text-xl font-medium mt-2">
-                  Total - {bookingData?.offerPrice * 2}{" "}
-                </p>
+                <p className="text-xl font-medium mt-2">Total - {total}</p>
                 <p>(No additional taxes or booking fees)</p>
                 <p className="text-xs text-[#1ED760] mt-2">
                   Offers applied : 1 offer available
@@ -271,7 +321,7 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
           </div>
           <div className="text-xs text-center my-5">
             <p>
-              Members can save up to 2.5%.{" "}
+              Members can save up to 2.5%.
               <span className="text-[#161EDD]">Sign up</span> to get it
             </p>
           </div>

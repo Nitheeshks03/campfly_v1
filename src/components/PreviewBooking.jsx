@@ -4,7 +4,7 @@ import { GiSurferVan } from "react-icons/gi";
 import { IoTicketOutline } from "react-icons/io5";
 import { GiSandsOfTime } from "react-icons/gi";
 
-function PreviewBooking({customPackage}) {
+function PreviewBooking({customPackage,contactDetails}) {
   return (
     <div>
       <div className="grid grid-cols-2 w-1/2 mt-5">
@@ -14,9 +14,9 @@ function PreviewBooking({customPackage}) {
           <p>Phone Number</p>
         </div>
         <div className="leading-10">
-          <p>: Smith John</p>
-          <p>: smithjohn@gmail.com</p>
-          <p>: 1234567890</p>
+          <p>: {contactDetails?.firstName}+{contactDetails?.lastName}</p>
+          <p>: {contactDetails?.email}</p>
+          <p>: {contactDetails?.phoneNumber}</p>
         </div>
       </div>
       <div className="flex justify-between mt-10">
@@ -69,6 +69,13 @@ function PreviewBooking({customPackage}) {
           </div>
         </div>
       </div>
+      <div className="max-w-[520px] h-[63px] mx-auto">
+            <button
+              className="w-full h-full bg-[#1ED760] rounded-[10px] font-medium"
+            >
+              Confirm booking
+            </button>
+          </div>
     </div>
   );
 }
