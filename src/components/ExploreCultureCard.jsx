@@ -33,13 +33,13 @@ function ExploreCultureCard({
         </div>
         <div className="font-medium text-[14px] mt-3">Get there</div>
         <div className="flex mt-3">
-          <div className="w-[100px] h-[35px] rounded-lg bg-gray-300 flex justify-center items-center  text-gray-600">
+          <div className="w-[100px] h-[35px] px-2 rounded-lg bg-gray-300 flex  items-center  text-gray-600">
             {getThereBestSeason}
           </div>
-          <div className="w-[100px] h-[35px] truncate rounded-lg bg-gray-300 flex justify-center items-center  text-gray-600 ml-3">
+          <div className="w-[100px] h-[35px] px-2 truncate rounded-lg bg-gray-300 flex items-center  text-gray-600 ml-3">
             {getThereNearestAirport}
           </div>
-          <div className="w-[100px]  h-[35px] truncate rounded-lg bg-gray-300 flex justify-center items-center  text-gray-600 ml-3">
+          <div className="w-[100px] h-[35px] px-2 truncate rounded-lg bg-gray-300 flex  items-center  text-gray-600 ml-3">
             {getThereNearestMainRailwayStation}
           </div>
         </div>
@@ -64,11 +64,11 @@ function ExploreCultureCard({
             </a>
           </div>
         </div>
-        <div className="flex justify-center my-5">
-          <button className="w-[222px] flex items-center justify-center text-xs rounded-md h-[30px] bg-[#1ED760]">
-            Explore packages
+        <div className="w-full  mx-auto my-5">
+          <button className="flex justify-center w-[222px] mx-auto px-4 items-center  text-xs rounded-md h-[30px] bg-[#1ED760]">
+           <p>Explore packages</p>
             <span className="ml-1">
-              <MdArrowRightAlt className="text-[15px] " />
+              <MdArrowRightAlt className="text-[15px]" />
             </span>
           </button>
         </div>
