@@ -9,11 +9,14 @@ import PreviewBooking from "./PreviewBooking.jsx";
 import BookingSuccess from "./BookingSuccess.jsx";
 import { IoMdClose } from "react-icons/io";
 import { Divider } from "@mantine/core";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function BookingModal({ handleBookingModalClose, bookingData }) {
   const [stepper, setStepper] = useState(false);
   const [active, setActive] = useState(1);
   const [selectedPackage, setSelectedPackage] = useState(null);
+  const [startDate, setStartDate] = useState(null);
 
   const nextStep = () =>
     setActive((current) => (current < 3 ? current + 1 : current));
@@ -24,6 +27,9 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
   };
   const handleStepperClose = () => {
     setStepper(false);
+  };
+  const handleStartDate = (date) => {
+    setStartDate(date);
   };
   return (
     <>
@@ -72,10 +78,11 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
               <IoMdClose className="text-3xl absolute cursor-pointer sm:top-0 sm:right-0 top-3 right-2" />
             </div>
             <div className="flex justify-between w-full">
-              <div >
-                <p className="text-xl font-medium">{bookingData?.destinationName}</p>
+              <div>
+                <p className="text-xl font-medium">
+                  {bookingData?.destinationName}
+                </p>
                 <p>{bookingData?.destinationMetaData}</p>
-
               </div>
               {bookingData?.memberPriceAvailable == "Yes" && (
                 <div className="w-[160px] h-[25px] flex items-center justify-center px-4 text-[10px] rounded-[10px] bg-[rgba(30,215,96,0.37)]">
@@ -83,7 +90,7 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
                 </div>
               )}
             </div>
-            <div className="sm:flex grid grid-cols-2 sm:flex-row flex-col mt-10 mdl:w-[60%] w-full justify-between">
+            <div className="sm:flex grid grid-cols-2 sm:flex-row flex-col mt-5 mdl:w-[60%] w-full justify-between">
               <div>
                 <input
                   className="transform scale-150 checked:bg-black"
@@ -135,8 +142,14 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
                 <p className="text-xs">₹ 11250 per adult</p>
               </div>
             </div>
-            <div>
-              <p>start and end date </p>
+            <div className="flex mt-5">
+              <div>
+                {startDate ? (
+                  <DatePicker selected={startDate} onChange={handleStartDate} />
+                ) : (
+                  <p>Click here to select a date</p>
+                )}
+              </div>
             </div>
             <hr />
             <h3 className="font-medium mt-5">What's included</h3>
@@ -162,7 +175,8 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
             <div className="flex w-full mt-5">
               <div className="sm:w-1/2 sm:border-r">
                 <p className="text-xl font-medium">
-                  {bookingData?.destinationName}: {selectedPackage && `${selectedPackage} package`}
+                  {bookingData?.destinationName}
+                  {selectedPackage && `:${selectedPackage} package`}
                 </p>
                 <div className="mt-2">
                   <span className="text-[#F00]">-25%</span>
@@ -229,7 +243,7 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
           <div className="text-center mt-3 text-xs">
             <p className="text-[#404040]">
               If you are unhappy with the package costs or require any
-              modifications, please contact a trip expert from our{" "}
+              modifications, please contact a trip expert from our
               <span className="text-[#161EDD]">customer servce </span> team
             </p>
           </div>

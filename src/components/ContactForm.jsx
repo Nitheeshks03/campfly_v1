@@ -1,74 +1,89 @@
-import { TextInput, Textarea, SimpleGrid, Group, Button } from "@mantine/core";
-import { useForm } from "@mantine/form";
+import React, { useState } from "react";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
-import { useState } from "react";
+
 function ContactForm() {
-  const [value, setValue] = useState(null);
-  const form = useForm({
-    initialValues: {
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    },
-    validate: {
-      name: (value) => value.trim().length < 2,
-      email: (value) => !/^\S+@\S+$/.test(value),
-      subject: (value) => value.trim().length === 0,
-    },
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: null,
   });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handlePhoneChange = (value) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      phoneNumber: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add your form submission logic here
+    console.log("Form submitted:", formData);
+  };
+
   return (
     <>
-      <form onSubmit={form.onSubmit(() => {})}>
-        <SimpleGrid cols={{ base: 1, sm: 2 }} mt="xl">
-          <TextInput
-            label="First name"
-            placeholder="Enter your first name"
-            name="first name"
+      <form onSubmit={handleSubmit}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First name"
+            value={formData.firstName}
+            onChange={handleChange}
             required
-            variant="filled"
-            {...form.getInputProps("name")}
           />
-          <TextInput
-            label="Last name"
-            placeholder="Enter your last name"
-            name="last name"
-            variant="filled"
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last name"
+            value={formData.lastName}
+            onChange={handleChange}
             required
-            {...form.getInputProps("email")}
           />
-        </SimpleGrid>
+        </div>
 
-        <TextInput
-          label="Email"
-          placeholder="Enter your email"
-          mt="md"
-          name="Email"
-          variant="filled"
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
           required
-          {...form.getInputProps("subject")}
         />
+
         <PhoneInput
           placeholder="Enter phone number"
-          value={value}
-          onChange={setValue}
+          value={formData.phoneNumber}
+          onChange={handlePhoneChange}
           className="mt-8"
         />
 
-        <Group justify="center" mt="xl">
-          <Button type="submit" size="md">
-            Send message
-          </Button>
-        </Group>
+        <div style={{ maxWidth: "520px", height: "63px", margin: "auto" }}>
+          <button
+            style={{
+              width: "100%",
+              height: "100%",
+              backgroundColor: "#1ED760",
+              borderRadius: "10px",
+              fontWeight: "medium",
+            }}
+            type="submit"
+          >
+            Preview Booking
+          </button>
+        </div>
       </form>
-      <div className="max-w-[520px] h-[63px] mx-auto">
-        <button
-          className="w-full h-full bg-[#1ED760] rounded-[10px] font-medium"
-        >
-          Preview Booking
-        </button>
-      </div>
     </>
   );
 }

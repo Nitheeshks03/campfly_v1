@@ -58,7 +58,7 @@ function HomePage() {
   }, []);
   return (
     <div className="max-w-full overflow-hidden">
-      <div className="relative sm:h-screen h-[600px]">
+      <div className="relative sm:h-[80vh] h-[550px]">
         <Navbar />
         <div className="absolute object-cover h-full w-full top-0 left-0 z-10">
           <img
