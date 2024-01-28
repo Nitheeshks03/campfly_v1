@@ -1,5 +1,8 @@
-import React from 'react';
-import { MdArrowRightAlt } from 'react-icons/md';
+import React from "react";
+import { MdArrowRightAlt } from "react-icons/md";
+import { MdOutlineDateRange } from "react-icons/md";
+import { IoAirplaneSharp } from "react-icons/io5";
+import { FaTrainSubway } from "react-icons/fa6";
 
 function ExploreCultureCard({
   mainImageToBeDisplayed,
@@ -18,46 +21,79 @@ function ExploreCultureCard({
 }) {
   return (
     <div className="sm:w-[532px] font-sans w-[350px] mx-auto p-1 border rounded-xl">
-      <div className="cover sm:w-[510px] sm:h-[520px] w-[340px] mx-auto mt-1  ">
-        <img src={mainImageToBeDisplayed} className="w-full h-full rounded-[10px]" alt={`Explore ${placeName}`} />
+      <div className="cover w-full h-[161px] overflow-hidden mx-auto">
+        <img
+          src={mainImageToBeDisplayed}
+          className="w-full h-full rounded-[10px]"
+          alt={`Explore ${placeName}`}
+        />
       </div>
       <div className="p-2">
         <div className="mt-3">
           <p className="text-xl font-medium">
             {placeName}
-            <span className="text-xs text-[#787878] ml-2">{placeNameMetaDescription}</span>
+            <span className="text-xs text-[#787878] ml-2">
+              {placeNameMetaDescription}
+            </span>
           </p>
         </div>
         <div className="mt-3">
           <p className="text-[#787878] text-[10px]">{placeBriefDescription}</p>
         </div>
         <div className="font-medium text-[14px] mt-3">Get there</div>
-        <div className="flex mt-3">
-          <div className="w-[100px] h-[35px] px-2 rounded-lg bg-gray-300 flex  items-center  text-gray-600">
+        <div className="flex mt-3 text-xs">
+          <div className="w-[104px] h-[33px] px-2 rounded-lg bg-gray-300 flex  items-center  text-gray-600">
+            <span className="text-[19px mr-1">
+              <MdOutlineDateRange />
+            </span>
             {getThereBestSeason}
           </div>
-          <div className="w-[100px] h-[35px] px-2 truncate rounded-lg bg-gray-300 flex items-center  text-gray-600 ml-3">
+          <div className="w-[104px] h-[33px] px-2 truncate rounded-lg bg-gray-300 flex items-center  text-gray-600 ml-3">
+            <span className="text-[19px mr-1">
+              <IoAirplaneSharp />
+            </span>
             {getThereNearestAirport}
           </div>
-          <div className="w-[100px] h-[35px] px-2 truncate rounded-lg bg-gray-300 flex  items-center  text-gray-600 ml-3">
+          <div className="w-[104px] h-[33px] px-2 truncate rounded-lg bg-gray-300 flex  items-center  text-gray-600 ml-3">
+            <span className="text-[19px mr-1">
+              <FaTrainSubway />
+            </span>
             {getThereNearestMainRailwayStation}
           </div>
         </div>
         <div className="font-medium text-[14px] mt-3">Things to do</div>
         <div className="grid grid-cols-4 text-[10px] mt-3">
-          <div className='text-center'>
-            <img src={thingsToDoOneImageURL} className='sm:w-[90px] w-[75px] h-[50px] rounded-md mx-auto' alt={`${thingsToDoOneName}`} />
+          <div className="text-center">
+            <div className="sm:w-[116px] w-[88px] h-[88px] mx-auto object-cover">
+              <img
+                src={thingsToDoOneImageURL}
+                className="rounded-md w-full h-full "
+                alt={`${thingsToDoOneName}`}
+              />
+            </div>
             <p className="truncate mt-2">{thingsToDoOneName}</p>
           </div>
-          <div className='text-center'>
-            <img src={thingsToDoTwoImageURL} className='sm:w-[90px] w-[75px] h-[50px] rounded-md mx-auto' alt={`${thingsToDoTwoName}`} />
+          <div className="text-center">
+            <div className="sm:w-[116px] w-[88px] h-[88px] mx-auto object-cover">
+              <img
+                src={thingsToDoTwoImageURL}
+                className="rounded-md w-full h-full "
+                alt={`${thingsToDoTwoName}`}
+              />
+            </div>
             <p className="truncate mt-2">{thingsToDoTwoName}</p>
           </div>
-          <div className='text-center'>
-            <img src={thingsToDoThreeImageURL} className='sm:w-[90px] w-[75px] h-[50px] rounded-md mx-auto' alt={`${thingsToDoThreeName}`} />
+          <div className="text-center">
+            <div className="sm:w-[116px] w-[88px] h-[88px] mx-auto object-cover">
+              <img
+                src={thingsToDoThreeImageURL}
+                className="rounded-md w-full h-full "
+                alt={`${thingsToDoThreeName}`}
+              />
+            </div>
             <p className="truncate mt-2">{thingsToDoThreeName}</p>
           </div>
-          <div>
+          <div className="p-3">
             <p className="text-[32px] text-[#787878]">10+</p>
             <a href="#" className="text-[#787878] text-[10px] underline">
               more things to do
@@ -66,7 +102,7 @@ function ExploreCultureCard({
         </div>
         <div className="w-full  mx-auto my-5">
           <button className="flex justify-center w-[222px] mx-auto px-4 items-center  text-xs rounded-md h-[30px] bg-[#1ED760]">
-           <p>Explore packages</p>
+            <p>Explore packages</p>
             <span className="ml-1">
               <MdArrowRightAlt className="text-[15px]" />
             </span>

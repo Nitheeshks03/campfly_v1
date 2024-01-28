@@ -98,8 +98,8 @@ function HomePage() {
       </div>
 
       <div className="text-center font-sans my-10">
-        <h2 className="sm:text-[48px] mb-5 text-4xl">Explore New Cultures</h2>
-        <p className="sm:text-sm text-sm sm:mt-0">
+        <h2 className="sm:text-[48px] mt-[60px] mb-5 text-4xl">Explore New Cultures</h2>
+        <p className="sm:text-sm text-sm sm:mt-0 mb-[40px]">
           Browse destinations for your next holiday plan.
         </p>
       </div>

@@ -4,32 +4,39 @@ import { GiSurferVan } from "react-icons/gi";
 import { IoTicketOutline } from "react-icons/io5";
 import { GiSandsOfTime } from "react-icons/gi";
 
-function PreviewBooking({ customPackage, contactDetails,FinalPricePerAdult,FinalBookingPriceTotal }) {
-  const bookingDetails={
-    formType:"quickBookings",
-    destinationName:customPackage?.destinationName,
-    destinationMetaData:customPackage?.destinationMetaData,
-    selectedPackage:customPackage?.selectedPackage,
-    packagePriceType:customPackage?.packagePriceType,
-    startDate:customPackage?.startDate,
-    endDate:customPackage?.endDate,
-    adultsNum:customPackage?.adultsNum,
-    firstName:contactDetails?.firstName,
-    lastName:contactDetails?.lastName,
-    phoneNumber:contactDetails?.phoneNumber,
+function PreviewBooking({
+  customPackage,
+  contactDetails,
+  FinalPricePerAdult,
+  FinalBookingPriceTotal,
+}) {
+  const bookingDetails = {
+    formType: "quickBookings",
+    destinationName: customPackage?.destinationName,
+    destinationMetaData: customPackage?.destinationMetaData,
+    selectedPackage: customPackage?.selectedPackage,
+    packagePriceType: customPackage?.packagePriceType,
+    startDate: customPackage?.startDate,
+    endDate: customPackage?.endDate,
+    adultsNum: customPackage?.adultsNum,
+    firstName: contactDetails?.firstName,
+    lastName: contactDetails?.lastName,
+    phoneNumber: contactDetails?.phoneNumber,
     FinalBookingPriceTotal,
     FinalPricePerAdult,
-  }
+  };
   const handleBooking = async () => {
     try {
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycby-0gcvcfQBWzBIzxRttcd8xOFoKRPwCvrRuggLKTe9GjToXJzU2-SZdJCLqW0tBbz_Eg/exec",
+        "https://script.google.com/macros/s/AKfycbwA7-omaBg4wevgUgzLTgPkunHSZev2RFwH9BFU3NjtHakAf5VZSoIY1i2d0CFWQGSiaQ/exec",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(bookingDetails),
+          mode: "cors",
+          credentials: "include",
         }
       );
     } catch (error) {
@@ -46,7 +53,8 @@ function PreviewBooking({ customPackage, contactDetails,FinalPricePerAdult,Final
         </div>
         <div className="leading-10">
           <p>
-            : {contactDetails?.firstName}+{contactDetails?.lastName}
+            : {contactDetails?.firstName}
+            {contactDetails?.lastName}
           </p>
           <p>: {contactDetails?.email}</p>
           <p>: {contactDetails?.phoneNumber}</p>
@@ -107,7 +115,10 @@ function PreviewBooking({ customPackage, contactDetails,FinalPricePerAdult,Final
         </div>
       </div>
       <div className="max-w-[520px] h-[63px] mx-auto">
-        <button onClick={handleBooking} className="w-full h-full bg-[#1ED760] rounded-[10px] font-medium">
+        <button
+          onClick={handleBooking}
+          className="w-full h-full bg-[#1ED760] rounded-[10px] font-medium"
+        >
           Confirm booking
         </button>
       </div>
