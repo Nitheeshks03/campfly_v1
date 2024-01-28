@@ -42,7 +42,7 @@ function Footer() {
           <div className="h-full ">
             <input
               type="text"
-              className="bg-black border border-white border-r-0 rounded-md h-full"
+              className="bg-black border border-white border-r-0 rounded-s-md h-full"
             />
           </div>
           <div className="h-full">
