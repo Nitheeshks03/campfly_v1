@@ -71,6 +71,7 @@ function HomePage() {
       <div className="text-center my-10">
         <h2 className="sm:text-[40px] text-4xl">Trending Getaways</h2>
       </div>
+
       <div className="px-10">
         <TrendingCarousel
           trendingData={trendingData}
@@ -108,7 +109,10 @@ function HomePage() {
         <>
           <div className="booking-overlay" />
           <div className="booking-modal">
-            <BookingModal bookingData={bookingData} handleBookingModalClose={handleBookingModalClose} />
+            <BookingModal
+              bookingData={bookingData}
+              handleBookingModalClose={handleBookingModalClose}
+            />
           </div>
         </>
       )}

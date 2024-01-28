@@ -4,12 +4,11 @@ import { IoTicketOutline } from "react-icons/io5";
 import { GiSandsOfTime } from "react-icons/gi";
 import { MdOutlineDateRange } from "react-icons/md";
 import { forwardRef, useState } from "react";
-import { Stepper, Button, Group, Select } from "@mantine/core";
+import { Stepper, Button, Group, Divider, Accordion, rem } from "@mantine/core";
 import ContactForm from "./ContactForm.jsx";
 import PreviewBooking from "./PreviewBooking.jsx";
 import BookingSuccess from "./BookingSuccess.jsx";
 import { IoMdClose } from "react-icons/io";
-import { Divider } from "@mantine/core";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -48,6 +47,7 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
   const [adultsNum, setAdultsNum] = useState(1);
   const [packagePriceType, setPackagePriceType] = useState("");
   const [contactDetails, setContactDetails] = useState(null);
+  const [value, setValue] = useState("premium");
 
   const nextStep = () =>
     setActive((current) => (current < 3 ? current + 1 : current));
@@ -84,6 +84,7 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
         return bookingData?.offerPrice;
     }
   };
+  const FinalPricePerAdult = getPackageRate();
   const total = getPackageRate() * adultsNum;
 
   return (
@@ -109,6 +110,8 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
                 <PreviewBooking
                   customPackage={customPackage}
                   contactDetails={contactDetails}
+                  FinalPricePerAdult={FinalPricePerAdult}
+                  FinalBookingPriceTotal={total}
                 />
               </Stepper.Step>
               <Stepper.Completed>
@@ -191,7 +194,7 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
                 onClick={() => setPackagePriceType("Premium")}
                 className={`${
                   packagePriceType === "Premium" ? "bg-[#1ED760]" : "bg-white"
-                } cursor-pointer border  drop-shadow-lg text-center rounded-xl py-2 px-4`}
+                } cursor-pointer border sm:mb-0 mb-2  drop-shadow-lg text-center rounded-xl py-2 px-4`}
               >
                 <p className="font-medium">Premium package</p>
                 <p className="text-xs">₹ {bookingData?.premiumRate}</p>
@@ -200,7 +203,7 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
                 onClick={() => setPackagePriceType("MidRange")}
                 className={`${
                   packagePriceType === "MidRange" ? "bg-[#1ED760]" : "bg-white"
-                } cursor-pointer border  drop-shadow-lg text-center rounded-xl py-2 px-4`}
+                } cursor-pointer border sm:mb-0 mb-2  drop-shadow-lg text-center rounded-xl py-2 px-4`}
               >
                 <p className="font-medium">Mid range package</p>
                 <p className="text-xs">₹{bookingData?.midRangeRate} </p>
@@ -209,18 +212,19 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
                 onClick={() => setPackagePriceType("Budget")}
                 className={`${
                   packagePriceType === "Budget" ? "bg-[#1ED760]" : "bg-white"
-                } cursor-pointer border drop-shadow-lg text-center rounded-xl py-2 px-4`}
+                } cursor-pointer border sm:mb-0 mb-2 drop-shadow-lg text-center rounded-xl py-2 px-4`}
               >
                 <p className="font-medium">Budget package</p>
                 <p className="text-xs">₹ {bookingData?.budgetRate}</p>
               </div>
             </div>
-            <div className="flex w-[65%] items-center justify-between my-5">
+
+            <div className="sm:flex grid grid-cols-2 gap-2 sm:w-[65%] items-center justify-between my-5">
               <div>
                 <DatePicker
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
-                  customInput = {<StartDatePickerInput />}
+                  customInput={<StartDatePickerInput />}
                 />
               </div>
               <div>
@@ -247,25 +251,58 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
               </div>
             </div>
             <hr />
-            <h3 className="font-medium mt-5">What's included</h3>
-            <div className="sm:flex mdl:w-[70%] w-full sm:justify-between mt-3 mb-5 grid grid-cols-2">
-              <div className="flex items-center">
-                <GiSandsOfTime className="opacity-70 text-[16px]" />
-                <p className="ml-2">{bookingData?.dayAndNightCount}</p>
-              </div>
-              <div className="flex items-center">
-                <IoFastFoodOutline className="opacity-70 text-[16px]" />
-                <p className="ml-2">{bookingData?.foodDetail}</p>
-              </div>
-              <div className="flex items-center">
-                <GiSurferVan className="opacity-70 text-[16px]" />
-                <p className="ml-2">{bookingData?.transportDetail}</p>
-              </div>
-              <div className="flex items-center">
-                <IoTicketOutline className="opacity-70 text-[16px]" />
-                <p className="ml-2">{bookingData?.entryTicket}</p>
+            <div className="sm:block hidden">
+              <h3 className="font-medium mt-5">What's included</h3>
+              <div className="sm:flex mdl:w-[70%] w-full sm:justify-between mt-3 mb-5 grid grid-cols-2">
+                <div className="flex items-center">
+                  <GiSandsOfTime className="opacity-70 text-[16px]" />
+                  <p className="ml-2">{bookingData?.dayAndNightCount}</p>
+                </div>
+                <div className="flex items-center">
+                  <IoFastFoodOutline className="opacity-70 text-[16px]" />
+                  <p className="ml-2">{bookingData?.foodDetail}</p>
+                </div>
+                <div className="flex items-center">
+                  <GiSurferVan className="opacity-70 text-[16px]" />
+                  <p className="ml-2">{bookingData?.transportDetail}</p>
+                </div>
+                <div className="flex items-center">
+                  <IoTicketOutline className="opacity-70 text-[16px]" />
+                  <p className="ml-2">{bookingData?.entryTicket}</p>
+                </div>
               </div>
             </div>
+
+            <div className="sm:hidden block">
+              <Accordion>
+                <Accordion.Item value="photos">
+                  <Accordion.Control>
+                    <p className="font-medium"> What's included</p>
+                  </Accordion.Control>
+                  <Accordion.Panel>
+                    <div className="sm:flex w-full sm:justify-between grid grid-cols-2">
+                      <div className="flex items-center">
+                        <GiSandsOfTime className="opacity-70 text-[16px]" />
+                        <p className="ml-2">{bookingData?.dayAndNightCount}</p>
+                      </div>
+                      <div className="flex items-center">
+                        <IoFastFoodOutline className="opacity-70 text-[16px]" />
+                        <p className="ml-2">{bookingData?.foodDetail}</p>
+                      </div>
+                      <div className="flex items-center">
+                        <GiSurferVan className="opacity-70 text-[16px]" />
+                        <p className="ml-2">{bookingData?.transportDetail}</p>
+                      </div>
+                      <div className="flex items-center">
+                        <IoTicketOutline className="opacity-70 text-[16px]" />
+                        <p className="ml-2">{bookingData?.entryTicket}</p>
+                      </div>
+                    </div>
+                  </Accordion.Panel>
+                </Accordion.Item>
+              </Accordion>
+            </div>
+
             <hr />
             <div className="flex w-full mt-5">
               <div className="sm:w-1/2 sm:border-r">
