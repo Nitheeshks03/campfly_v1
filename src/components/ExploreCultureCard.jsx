@@ -62,7 +62,7 @@ function ExploreCultureCard({
           </div>
         </div>
         <div className="font-medium text-[14px] mt-3">Things to do</div>
-        <div className="grid grid-cols-4 text-[10px] mt-3">
+        <div className="grid sm:grid-cols-4 grid-cols-3 text-[10px] mt-3">
           <div className="text-center">
             <div className="sm:w-[116px] w-[88px] h-[88px] mx-auto object-cover">
               <img
@@ -83,7 +83,7 @@ function ExploreCultureCard({
             </div>
             <p className="truncate mt-2">{thingsToDoTwoName}</p>
           </div>
-          <div className="text-center">
+          <div className="text-center sm:block hidden">
             <div className="sm:w-[116px] w-[88px] h-[88px] mx-auto object-cover">
               <img
                 src={thingsToDoThreeImageURL}
@@ -94,7 +94,7 @@ function ExploreCultureCard({
             <p className="truncate mt-2">{thingsToDoThreeName}</p>
           </div>
           <div className="p-3">
-            <p className="text-[32px] text-[#787878]">10+</p>
+            <p className="sm:text-[32px] text-xl text-[#787878]">10+</p>
             <a href="#" className="text-[#787878] text-[10px] underline">
               more things to do
             </a>

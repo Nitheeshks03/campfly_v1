@@ -17,7 +17,7 @@ function OurPackagesSection() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-2 mx-auto grid-rows-2 lg:w-1/2 gap-5">
+      <div className="grid grid-cols-2 mx-auto grid-rows-2 md:w-1/2 gap-5">
         <div className="flex object-cover rounded-xl border border-black relative mx-auto lsm:w-[230px] lsm:h-[210px] justify-center items-center hover:border-white">
           <img
             src="/images/our-package-1.png"
