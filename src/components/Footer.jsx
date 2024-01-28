@@ -3,7 +3,7 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { AiFillYoutube } from "react-icons/ai";
 function Footer() {
   return (
-    <div className="bg-black sm:p-[75px] p-5 sm:flex sm:flex-row flex-col">
+    <div className="bg-black font-sans sm:p-[75px] p-5 sm:flex sm:flex-row flex-col">
       <div className="md:w-1/3 sm:w-1/2 sm:text-left text-center w-full sm:border-r border-white">
         <div className="z-50 sm:w-[205px] sm:mx-0 mx-auto w-[160px] sm:h-[45px]">
           <img

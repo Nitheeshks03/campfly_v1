@@ -10,6 +10,13 @@ import BookingModal from "../components/BookingModal";
 import { useEffect, useState } from "react";
 import BannerHomeCarousel from "../components/BannerHomeCarousel";
 
+const images = [
+  "/images/carousel_1.png",
+  "/images/carousel_2.png",
+  "/images/carousel_3.png",
+  "/images/carousel_3.png",
+];
+
 function HomePage() {
   const [bookingModal, setBookingModal] = useState(false);
   const [trendingData, setTrendingData] = useState(null);
@@ -17,6 +24,7 @@ function HomePage() {
   const [bookingData, setBookingData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handleBookingModalOpen = (packageData) => {
     setBookingModal(true);
@@ -25,6 +33,16 @@ function HomePage() {
   const handleBookingModalClose = () => {
     setBookingModal(false);
   };
+
+  useEffect(() => {
+    const changeImage = () => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    };
+
+    const intervalId = setInterval(changeImage, 2000);
+
+    return () => clearInterval(intervalId);
+  }, [images.length]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,8 +81,8 @@ function HomePage() {
         <div className="absolute object-cover h-full w-full top-0 left-0 z-10">
           <img
             className="w-full h-full"
-            src="/images/carousel_1.png"
-            alt="carousel-1"
+            src={images[currentImageIndex]}
+            alt={`carousel-image-${currentImageIndex}`}
           />
         </div>
       </div>
@@ -79,9 +97,9 @@ function HomePage() {
         />
       </div>
 
-      <div className="text-center my-10">
-        <h2 className="sm:text-[48px] text-4xl">Explore New Cultures</h2>
-        <p className="sm:text-sm text-sm sm:mt-0 mt-3">
+      <div className="text-center font-sans my-10">
+        <h2 className="sm:text-[48px] mb-5 text-4xl">Explore New Cultures</h2>
+        <p className="sm:text-sm text-sm sm:mt-0">
           Browse destinations for your next holiday plan.
         </p>
       </div>

@@ -37,7 +37,7 @@ function PreviewBooking({ customPackage, contactDetails,FinalPricePerAdult,Final
     }
   };
   return (
-    <div>
+    <div className="font-sans">
       <div className="grid grid-cols-2 w-1/2 mt-5">
         <div className="leading-10">
           <p>Name</p>

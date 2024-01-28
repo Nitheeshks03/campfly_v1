@@ -1,6 +1,6 @@
 function GetRecommendation() {
   return (
-    <div className="w-full flex">
+    <div className="w-full font-sans flex">
       <div className="object-cover md:block hidden rounded-s-xl  overflow-hidden">
         <img src="/images/get-recommendations.png" className="h-full" alt="get-recommendations" />
       </div>

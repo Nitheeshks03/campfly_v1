@@ -1,6 +1,6 @@
 function OurPackagesSection() {
   return (
-    <div className="bg-black sm:p-20 p-5 lg:flex  lg:justify-around">
+    <div className="bg-black font-sans sm:p-20 p-5 lg:flex  lg:justify-around">
       <div className="flex items-center lg:hidden justify-center">
         <div className="text-center">
           <h3 className="text-white sm:text-[40px] text-[30px]">
@@ -48,7 +48,7 @@ function OurPackagesSection() {
             is a chapter waiting to be written
           </p>
           <div className="my-5">
-            <button className="w-[100px]  p-2 rounded-md bg-[#1ED760]">
+            <button className="w-[100px] p-2 rounded-md bg-[#1ED760]">
               Sign in
             </button>
           </div>

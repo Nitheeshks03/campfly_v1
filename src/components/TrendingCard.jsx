@@ -50,7 +50,7 @@ function TrendingCard({
     handleBookingModalOpen(packageData);
   };
   return (
-    <div className="w-[308px] mx-auto border rounded-2xl p-2">
+    <div className="w-[308px] font-sans  mx-auto border rounded-2xl p-2">
       <div className="cover w-[290px] h-[210px] relative">
         <img
           src={imageUrl}

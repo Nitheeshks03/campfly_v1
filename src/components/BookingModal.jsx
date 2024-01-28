@@ -134,7 +134,7 @@ function BookingModal({ handleBookingModalClose, bookingData }) {
         </>
       ) : (
         <>
-          <div className="w-full h-max p-5 border rounded-xl">
+          <div className="w-full font-sans h-max p-5 border rounded-xl">
             <div onClick={handleBookingModalClose}>
               <IoMdClose className="text-3xl absolute cursor-pointer sm:top-0 sm:right-0 top-3 right-2" />
             </div>

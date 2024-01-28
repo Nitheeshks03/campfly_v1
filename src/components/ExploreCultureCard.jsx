@@ -17,7 +17,7 @@ function ExploreCultureCard({
   thingsToDoThreeImageURL,
 }) {
   return (
-    <div className="sm:w-[532px] w-[350px] mx-auto p-1 border rounded-xl">
+    <div className="sm:w-[532px] font-sans w-[350px] mx-auto p-1 border rounded-xl">
       <div className="cover sm:w-[510px] sm:h-[520px] w-[340px] mx-auto mt-1  ">
         <img src={mainImageToBeDisplayed} className="w-full h-full rounded-[10px]" alt={`Explore ${placeName}`} />
       </div>

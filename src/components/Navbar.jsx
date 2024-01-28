@@ -20,7 +20,7 @@ function Navbar() {
   console.log(isOpen);
   return (
     <>
-      <div className="h-[80px] mx-5 md:flex hidden justify-between items-center z-50">
+      <div className="h-[80px] font-sans mx-5 md:flex hidden justify-between items-center z-50">
         <div className="z-50">
           <img src="/images/campfly_logo.png" alt="campfly" />
         </div>

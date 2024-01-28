@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import {
+  TextInput,
+  Textarea,
+  SimpleGrid,
+  Group,
+  Title,
+  Button,
+} from "@mantine/core";
 
-function ContactForm({setContactDetails,nextStep}) {
+function ContactForm({ setContactDetails, nextStep }) {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -33,51 +41,68 @@ function ContactForm({setContactDetails,nextStep}) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+      <form onSubmit={handleSubmit} className="mx-auto font-sans mt-8 rounded-md">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="firstName" className="block font-medium">
+              First name
+            </label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="First name"
+              className="w-full p-2 mt-2 border rounded-md"
+              value={formData.firstName}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="lastName" className="block font-medium">
+              Last name
+            </label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Last name"
+              value={formData.lastName}
+              onChange={handleChange}
+              className="w-full p-2 mt-2 border rounded-md"
+            />
+          </div>
+        </div>
+
+        <div className="mt-4">
+          <label htmlFor="email" className="block font-medium">
+            Email
+          </label>
           <input
-            type="text"
-            name="firstName"
-            placeholder="First name"
-            value={formData.firstName}
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            value={formData.email}
             onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Last name"
-            value={formData.lastName}
-            onChange={handleChange}
-            required
+            className="w-full p-2 mt-2 border rounded-md"
           />
         </div>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
+        <div className="mt-4">
+          <label htmlFor="phoneNumber" className="block font-medium">
+            Phone number
+          </label>
+          <PhoneInput
+            placeholder="Enter phone number"
+            value={formData.phoneNumber}
+            onChange={handlePhoneChange}
+            className="mt-8"
+          />
+        </div>
 
-        <PhoneInput
-          placeholder="Enter phone number"
-          value={formData.phoneNumber}
-          onChange={handlePhoneChange}
-          className="mt-8"
-        />
-
-        <div style={{ maxWidth: "520px", height: "63px", margin: "auto" }}>
+        <div className="max-w-2xl mx-auto mt-8">
           <button
-            style={{
-              width: "100%",
-              height: "100%",
-              backgroundColor: "#1ED760",
-              borderRadius: "10px",
-              fontWeight: "medium",
-            }}
+            className="w-full h-16 bg-green-500 text-black rounded-md font-medium"
             type="submit"
           >
             Preview Booking
