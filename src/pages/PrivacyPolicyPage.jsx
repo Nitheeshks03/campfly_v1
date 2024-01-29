@@ -2,6 +2,8 @@ import { Tabs, rem } from "@mantine/core";
 import NavBar from "../components/Navbar";
 import Privacy from "../components/Privacy";
 import Footer from "../components/Footer";
+import Refund from "../components/Refund";
+import Terms from "../components/Terms";
 
 function PrivacyPolicyPage() {
   return (
@@ -19,9 +21,13 @@ function PrivacyPolicyPage() {
             <Privacy />
           </Tabs.Panel>
 
-          <Tabs.Panel value="refund">Messages tab content</Tabs.Panel>
+          <Tabs.Panel value="refund">
+            <Refund />
+          </Tabs.Panel>
 
-          <Tabs.Panel value="terms">Settings tab content</Tabs.Panel>
+          <Tabs.Panel value="terms">
+            <Terms />
+          </Tabs.Panel>
         </Tabs>
       </div>
       <Footer />
