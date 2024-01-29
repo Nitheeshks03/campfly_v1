@@ -1,5 +1,5 @@
-import '@mantine/core/styles.css';
-import '@mantine/carousel/styles.css';
+import "@mantine/core/styles.css";
+import "@mantine/carousel/styles.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -7,6 +7,7 @@ import "./index.css";
 import HomePage from "./pages/HomePage.jsx";
 import PackagePage from "./pages/PackagePage.jsx";
 import { MantineProvider } from "@mantine/core";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/munnar",
     element: <PackagePage />,
+  },
+  {
+    path: "/policies",
+    element: <PrivacyPolicyPage />,
   },
 ]);
 

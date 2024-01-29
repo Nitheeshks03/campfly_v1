@@ -1,0 +1,15 @@
+.privacy p {
+  font-size: 20px;
+  color: #787878;
+  font-weight: 500;
+  font-family: "Poppins";
+  margin-bottom: 23px;
+}
+
+.privacy li {
+  color: #787878;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+}

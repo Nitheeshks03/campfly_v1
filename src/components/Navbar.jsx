@@ -17,7 +17,6 @@ function Navbar() {
   const handleIsClose = () => {
     setIsOpen(false);
   };
-  console.log(isOpen);
   return (
     <>
       <div className="h-[80px] font-sans mx-5 md:flex hidden justify-between items-center z-50">

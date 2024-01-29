@@ -28,15 +28,18 @@ function PreviewBooking({
   const handleBooking = async () => {
     try {
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbwA7-omaBg4wevgUgzLTgPkunHSZev2RFwH9BFU3NjtHakAf5VZSoIY1i2d0CFWQGSiaQ/exec",
+        "https://script.google.com/macros/s/AKfycbzoCYMOhgtrEwFymH1Yv2zkg0wt185I3ld1w9eu6LgZEJnt1r654InlpHyCVW4Tnq4M9w/exec",
         {
+          redirect: "follow",
           method: "POST",
+          credentials: "include",
+
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "text/plain;charset=utf-8",
           },
           body: JSON.stringify(bookingDetails),
-          mode: "cors",
-          credentials: "include",
+          // mode: "cors",
+          // credentials: "include",
         }
       );
     } catch (error) {
