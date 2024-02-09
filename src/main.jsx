@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage.jsx";
 import PackagePage from "./pages/PackagePage.jsx";
 import { MantineProvider } from "@mantine/core";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage.jsx";
+import IndividualTripPage from "./pages/IndividualTripPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
     path: "/policies",
     element: <PrivacyPolicyPage />,
   },
+  {
+    path: "/page",
+    element: <IndividualTripPage/>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
