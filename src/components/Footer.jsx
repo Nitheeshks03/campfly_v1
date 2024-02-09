@@ -1,7 +1,9 @@
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebookSquare } from "react-icons/fa";
 import { AiFillYoutube } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 function Footer() {
+  const navigate = useNavigate();
   return (
     <div className="bg-black font-sans sm:p-[75px] p-5 sm:flex sm:flex-row flex-col">
       <div className="md:w-1/3 sm:w-1/2 sm:text-left text-center w-full sm:border-r border-white">
@@ -29,8 +31,8 @@ function Footer() {
           <p>Contact Us</p>
         </div>
         <div className="w-full leading-10">
-          <p>Privacy Policy</p>
-          <p>Terms & Conditions</p>
+          <p onClick={()=> navigate('/policies')} className="cursor-pointer">Privacy Policy</p>
+          <p onClick={()=> navigate('/policies')} className="cursor-pointer">Terms & Conditions</p>
           <p>FAQ</p>
         </div>
       </div>
