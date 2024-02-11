@@ -77,7 +77,7 @@ function HomePage() {
     <div className="max-w-full overflow-hidden">
       <div className="relative sm:h-[80vh] h-[550px]">
         <div className="absolute w-full z-[100] sm:top-[40%] top-[45%] text-center right-[50%] translate-x-[50%]">
-          <h1 className="sm:text-[64px] text-4xl mb-2 sm:mb-0 font-semibold font-raleway text-[#FFF]">
+          <h1 className="sm:text-[64px] text-4xl mb-2 sm:mb-4 font-semibold font-raleway text-[#FFF]">
             Explore the World
           </h1>
           <p className="sm:text-xl font-raleway text-[#FFF]">
