@@ -44,7 +44,7 @@ function Navbar() {
         <div className="z-50 cursor-pointer" onClick={() => navigate("/")}>
           <img src="/images/campfly_logo.png" alt="campfly" />
         </div>
-        <div className="flex lg:w-[50%] w-[40%] lg:justify-between gap-[27px] items-center lg:px-20">
+        <div className="flex md:w-[50%] w-[40%] md:justify-end gap-[27px] items-center">
           <p className="z-50">Honeymoon</p>
           <p className="z-50">Family/Friends</p>
           <p className="z-50">Solo</p>
