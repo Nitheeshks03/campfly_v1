@@ -55,8 +55,12 @@ function Navbar() {
           </div>
         </div>
       </div>
-      <div className="flex md:hidden mx-5 justify-between items-center">
-        <div className="z-50 sm:w-[205px] w-[160px] sm:h-[45px]">
+      <div
+        className={`flex md:hidden w-full px-5 fixed z-[20] justify-between items-center ${
+          scrolled ? "bg-white" : ""
+        }`}
+      >
+        <div className="sm:w-[205px] w-[160px] sm:h-[45px]">
           <img
             src="/images/campfly_logo.png"
             className="w-full h-full"
