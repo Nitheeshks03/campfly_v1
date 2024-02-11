@@ -22,7 +22,7 @@ function Navbar() {
   return (
     <>
       <div className="h-[80px] font-sans mx-5 md:flex hidden justify-between items-center z-50">
-        <div className="z-50" onClick={()=> navigate('/')} >
+        <div className="z-50 cursor-pointer" onClick={()=> navigate('/')} >
           <img src="/images/campfly_logo.png" alt="campfly" />
         </div>
         <div className="flex lg:w-[40%] w-[40%] lg:justify-between justify-around items-center lg:px-20">
