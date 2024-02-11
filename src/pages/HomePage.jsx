@@ -14,7 +14,6 @@ const images = [
   "/images/carousel_1.png",
   "/images/carousel_2.png",
   "/images/carousel_3.png",
-  "/images/carousel_3.png",
 ];
 
 function HomePage() {
@@ -77,6 +76,14 @@ function HomePage() {
   return (
     <div className="max-w-full overflow-hidden">
       <div className="relative sm:h-[80vh] h-[550px]">
+        <div className="absolute w-full z-[100] sm:top-[40%] top-[45%] text-center right-[50%] translate-x-[50%]">
+          <h1 className="sm:text-[64px] text-4xl mb-2 sm:mb-0 font-semibold font-raleway text-[#FFF]">
+            Explore the World
+          </h1>
+          <p className="sm:text-xl font-raleway text-[#FFF]">
+            Discover your dream destinations
+          </p>
+        </div>
         <Navbar />
         <div className="absolute object-cover h-full w-full top-0 left-0 z-10">
           <img
@@ -98,7 +105,9 @@ function HomePage() {
       </div>
 
       <div className="text-center font-sans my-10">
-        <h2 className="sm:text-[48px] mt-[60px] mb-5 text-4xl">Explore New Cultures</h2>
+        <h2 className="sm:text-[48px] mt-[60px] mb-5 text-4xl">
+          Explore New Cultures
+        </h2>
         <p className="sm:text-sm text-sm sm:mt-0 mb-[40px]">
           Browse destinations for your next holiday plan.
         </p>

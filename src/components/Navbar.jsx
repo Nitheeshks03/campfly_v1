@@ -1,16 +1,31 @@
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 import { useState } from "react";
-import { useDisclosure } from '@mantine/hooks';
-import { Drawer, Button } from '@mantine/core';
+import { useDisclosure } from "@mantine/hooks";
+import { Drawer, Button } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
-
+import { useEffect } from "react";
 
 function Navbar() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [opened, { open, close }] = useDisclosure(false);
+  const [scrolled, setScrolled] = useState(false);
 
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleIsOpen = () => {
     setIsOpen(true);
@@ -21,20 +36,32 @@ function Navbar() {
   };
   return (
     <>
-      <div className="h-[80px] font-sans mx-5 md:flex hidden justify-between items-center z-50">
-        <div className="z-50 cursor-pointer" onClick={()=> navigate('/')} >
+      <div
+        className={`h-[80px] fixed w-full font-sans px-[80px] md:flex hidden justify-between items-center z-[110] ${
+          scrolled ? "bg-white" : ""
+        }`}
+      >
+        <div className="z-50 cursor-pointer" onClick={() => navigate("/")}>
           <img src="/images/campfly_logo.png" alt="campfly" />
         </div>
-        <div className="flex lg:w-[40%] w-[40%] lg:justify-between justify-around items-center lg:px-20">
+        <div className="flex lg:w-[50%] w-[40%] lg:justify-between gap-[27px] items-center lg:px-20">
           <p className="z-50">Honeymoon</p>
           <p className="z-50">Family/Friends</p>
           <p className="z-50">Solo</p>
-          <button className="z-50">Sign in</button>
+          <div>
+            <button className="z-50 w-[120px] h-[40px] bg-[#1ED760] rounded-[10px]">
+              Sign in
+            </button>
+          </div>
         </div>
       </div>
       <div className="flex md:hidden mx-5 justify-between items-center">
         <div className="z-50 sm:w-[205px] w-[160px] sm:h-[45px]">
-          <img src="/images/campfly_logo.png" className="w-full h-full" alt="campfly" />
+          <img
+            src="/images/campfly_logo.png"
+            className="w-full h-full"
+            alt="campfly"
+          />
         </div>
         {isOpen ? (
           <div className="z-50 p-3" onClick={handleIsClose}>
@@ -46,13 +73,18 @@ function Navbar() {
           </div>
         )}
       </div>
-      <Drawer radius="md" size="md" className="text-2xl leading-10"  opened={opened} onClose={close} >
+      <Drawer
+        radius="md"
+        size="md"
+        className="text-2xl leading-10"
+        opened={opened}
+        onClose={close}
+      >
         <p>Home</p>
         <p>Family</p>
         <p>Friends</p>
         <p>Solo</p>
       </Drawer>
-       
     </>
   );
 }

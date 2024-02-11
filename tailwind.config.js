@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Poppins'],
+        raleway: ['Raleway']
       },
     },
     screens:{
