@@ -1,32 +1,36 @@
 import { Tabs, rem } from "@mantine/core";
-import NavBar from "../components/Navbar";
-import Privacy from "../components/Privacy";
 import Footer from "../components/Footer";
-import Refund from "../components/Refund";
-import Terms from "../components/Terms";
-
+import Navbar from "../components/Navbar";
+import { Outlet, useParams, Link } from "react-router-dom";
 function PrivacyPolicyPage() {
+  const params = useParams();
+  const defaultValue = params.tab || "privacy";
   return (
     <>
-      <NavBar />
+      <Navbar />
       <div className="mx-[70px]">
-        <Tabs defaultValue="privacy">
+        <Tabs defaultValue={defaultValue}>
           <Tabs.List>
-            <Tabs.Tab value="privacy">Privacy policies</Tabs.Tab>
-            <Tabs.Tab value="refund">Cancellation and refund policy</Tabs.Tab>
-            <Tabs.Tab value="terms">Terms & conditions</Tabs.Tab>
+            <Tabs.Tab value="privacy">
+              <Link to="/privacy">Privacy policies</Link>
+            </Tabs.Tab>
+            <Tabs.Tab value="refund">
+              <Link to="/refund">Cancellation and refund policy</Link>
+            </Tabs.Tab>
+            <Tabs.Tab value="terms">
+              <Link to="/terms">Terms & conditions</Link>
+            </Tabs.Tab>
           </Tabs.List>
-
           <Tabs.Panel value="privacy">
-            <Privacy />
+            <Outlet />
           </Tabs.Panel>
 
           <Tabs.Panel value="refund">
-            <Refund />
+            <Outlet />
           </Tabs.Panel>
 
           <Tabs.Panel value="terms">
-            <Terms />
+            <Outlet />
           </Tabs.Panel>
         </Tabs>
       </div>

@@ -9,6 +9,9 @@ import PackagePage from "./pages/PackagePage.jsx";
 import { MantineProvider } from "@mantine/core";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage.jsx";
 import IndividualTripPage from "./pages/IndividualTripPage.jsx";
+import Privacy from "./components/Privacy.jsx";
+import Refund from "./components/Refund.jsx";
+import Terms from "./components/Terms.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,13 +23,27 @@ const router = createBrowserRouter([
     element: <PackagePage />,
   },
   {
-    path: "/policies",
+    path: "/",
     element: <PrivacyPolicyPage />,
+    children: [
+      {
+        path: "privacy",
+        element: <Privacy />,
+      },
+      {
+        path: "refund",
+        element: <Refund />,
+      },
+      {
+        path: "terms",
+        element: <Terms />,
+      },
+    ],
   },
   {
     path: "/page",
-    element: <IndividualTripPage/>
-  }
+    element: <IndividualTripPage />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

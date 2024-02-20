@@ -37,8 +37,8 @@ function Navbar() {
   return (
     <>
       <div
-        className={`h-[80px] fixed w-full font-sans px-[80px] md:flex hidden justify-between items-center z-[110] ${
-          scrolled ? "bg-white" : ""
+        className={`h-[80px]  w-full font-sans px-[80px] md:flex hidden justify-between items-center z-[110] ${
+          scrolled ? "bg-white fixed" : ""
         }`}
       >
         <div className="z-50 cursor-pointer" onClick={() => navigate("/")}>

@@ -31,9 +31,9 @@ function Footer() {
           <p>Contact Us</p>
         </div>
         <div className="w-full leading-10">
-          <p onClick={()=> navigate('/policies')} className="cursor-pointer">Privacy Policy</p>
-          <p onClick={()=> navigate('/policies')} className="cursor-pointer">Terms & Conditions</p>
-          <p>FAQ</p>
+          <p onClick={()=> navigate('/privacy')} className="cursor-pointer">Privacy Policy</p>
+          <p onClick={()=> navigate('/terms')} className="cursor-pointer">Terms & Conditions</p>
+          <p onClick={()=> navigate('/refund')} className="cursor-pointer">Refund policies</p>
         </div>
       </div>
       <div className="w-1/3 md:block hidden text-white p-10">
