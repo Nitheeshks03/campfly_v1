@@ -12,6 +12,7 @@ import IndividualTripPage from "./pages/IndividualTripPage.jsx";
 import Privacy from "./components/Privacy.jsx";
 import Refund from "./components/Refund.jsx";
 import Terms from "./components/Terms.jsx";
+import ContactUs from "./pages/ContactUs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
         element: <Terms />,
       },
     ],
+  },
+  {
+    path: "/contact-us",
+    element: <ContactUs/>
   },
   {
     path: "/page",

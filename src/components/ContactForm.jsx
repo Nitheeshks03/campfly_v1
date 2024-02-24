@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
-import {
-  TextInput,
-  Textarea,
-  SimpleGrid,
-  Group,
-  Title,
-  Button,
-} from "@mantine/core";
+
 
 function ContactForm({ setContactDetails, nextStep }) {
   const [formData, setFormData] = useState({

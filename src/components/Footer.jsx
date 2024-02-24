@@ -26,9 +26,9 @@ function Footer() {
       </div>
       <div className="md:w-1/3 sm:w-1/2 w-full flex text-white md:p-10 pl-5 md:border-r border-white">
         <div className="w-full leading-10">
-          <p>Home</p>
+          <p onClick={()=> navigate('/')} className="cursor-pointer">Home</p>
           <p>About Us</p>
-          <p>Contact Us</p>
+          <p onClick={()=> navigate('/contact-us')} className="cursor-pointer">Contact Us</p>
         </div>
         <div className="w-full leading-10">
           <p onClick={()=> navigate('/privacy')} className="cursor-pointer">Privacy Policy</p>
