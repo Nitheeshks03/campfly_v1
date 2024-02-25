@@ -16,7 +16,7 @@ function ContactUsForm() {
                 <div className="flex items-center">
                   <FaPhoneVolume /> <p className="ml-2">Call</p>
                 </div>
-                <p>+91 9087 6543 21</p>
+                <p>+91 8891999253</p>
               </div>
             </div>
 
@@ -26,7 +26,7 @@ function ContactUsForm() {
                   <TfiEmail />
                   <p className="ml-2">Email ID</p>
                 </div>
-                <p>campfly@gmail.com</p>
+                <p>info@campfly.in</p>
               </div>
             </div>
           </div>

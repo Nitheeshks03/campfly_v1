@@ -10,7 +10,7 @@ function Branch() {
       <div className="border border-gray-300 ml-20 mr-20 md:mr-20 mt-8 p-4 rounded-xl flex flex-col md:flex-row">
         <div className="w-full md:w-1/2 mt-4 px-4">
           <h3 className="text-3xl font-bold mb-2">
-            <span className="camplify-h3">Camplify</span> Kerala
+            <span className="camplify-h3">Campfly</span> Kerala
           </h3>
           <p className="text-xl-gray-600 mb-4 leading-relaxed">
             campfly private limited <br />
