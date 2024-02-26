@@ -19,7 +19,7 @@ function Help() {
             <div className="flex items-center">
               <FaPhoneVolume />
               <p className="text-black-500 font-semibold text-lg">
-                +91 9087 6543 21
+                +91 8891999253{" "}
               </p>
             </div>
           </div>
@@ -33,9 +33,9 @@ function Help() {
               We're Here to Assist You! Contact Us Whenever You Need Help.
             </p>
             <div className="flex items-center">
-            <FaPhoneVolume />
+              <FaPhoneVolume />
               <p className="text-black-500 font-semibold text-lg">
-                +91 9087 6543 21
+                +91 8891999253{" "}
               </p>
             </div>
           </div>
@@ -49,9 +49,9 @@ function Help() {
               We're Here to Assist You! Contact Us Whenever You Need Help.
             </p>
             <div className="flex items-center">
-            <FaPhoneVolume />
+              <FaPhoneVolume />
               <p className="text-black-500 font-semibold text-lg">
-                +91 9087 6543 21
+                +91 8891999253{" "}
               </p>
             </div>
           </div>
@@ -65,9 +65,9 @@ function Help() {
               We're Here to Assist You! Contact Us Whenever You Need Help.
             </p>
             <div className="flex items-center">
-            <FaPhoneVolume />
+              <FaPhoneVolume />
               <p className="text-black-500 font-semibold text-lg">
-                +91 9087 6543 21
+                +91 8891999253{" "}
               </p>
             </div>
           </div>
