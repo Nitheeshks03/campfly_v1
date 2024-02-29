@@ -170,3 +170,74 @@ body {
     margin-top: 10px;
   }
 }
+
+
+
+.bg-custom-green {
+    background-color: #1ED760;
+  }
+  
+  .logo {
+    margin-left: 20px;
+  }
+  .logo-img{
+    background-image: url(../public/logo-black.png);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .bg-gray-100 {
+    background-color: #f3f4f6;
+  }
+  
+  .border-black {
+    border-color: #000000;
+  }
+  
+  .rounded-full {
+    border-radius: 9999px;
+  }
+  
+  .search-bar {
+    position: relative;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1rem; 
+    height: 1rem; 
+    background-image: url('../public/search-vector.png'); 
+    background-size: cover;
+  }
+  
+  
+  .search-input {
+    padding-left: 1.8rem;
+  }
+  .bg-img{
+    width: 100%;
+    height: 501px;
+    
+
+  }
+  .packages-container {
+    position: absolute; 
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    
+  }
+  input[type='checkbox'] {
+    accent-color: black;
+}
+
+input[type=radio] {
+  accent-color:black;
+}
+
+
+  
+  
+  

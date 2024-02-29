@@ -13,6 +13,7 @@ import Privacy from "./components/Privacy.jsx";
 import Refund from "./components/Refund.jsx";
 import Terms from "./components/Terms.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
+import AboutUs from './pages/AboutUs.jsx'
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
   {
     path: "/contact-us",
     element: <ContactUs/>
+  },
+  {
+    path: "/about-us",
+    element: <AboutUs/>
   },
   {
     path: "/page",
